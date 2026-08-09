@@ -13,6 +13,11 @@ __pycache__/
 .coverage
 htmlcov/
 
+# Node & Frontend Build Artifacts
+node_modules/
+.vite/
+dist/
+
 # macOS system files
 .DS_Store
 .AppleDouble
