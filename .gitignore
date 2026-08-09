@@ -1,0 +1,38 @@
+# Virtual Environments
+.venv/
+venv/
+env/
+ENV/
+
+# Python cache & build artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Environment configuration
+.env
+!.env.example
+
+# Large model weights, checkpoints, & raw activation dumps
+*.bin
+*.pt
+*.pth
+*.safetensors
+.cache/
+huggingface/
+
+# Large media artifacts
+demo/showcase_clip.mp4
+
+# IDE files
+.vscode/
+.idea/

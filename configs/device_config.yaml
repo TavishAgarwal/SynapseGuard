@@ -1,0 +1,12 @@
+# SynapseGuard Device & Hardware Execution Configuration
+# Device settings tuned for RTX 3050 6GB VRAM (WSL2 Ubuntu)
+
+device: "cuda" # "cuda" on GPU machine, fallback to "cpu" or "mps" on Mac
+quantization: "int8" # bitsandbytes int8
+gpu_memory_utilization: 0.85
+max_model_len: 512 # conservative window to preserve KV cache headroom
+enforce_eager: true # avoid CUDA graph overhead on 6GB VRAM
+dtype: "float16"
+
+wsl_host: "localhost"
+sidecar_port: 8000

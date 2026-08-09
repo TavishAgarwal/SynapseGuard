@@ -1,0 +1,22 @@
+# SynapseGuard Benchmark & Validation Configuration
+
+datasets:
+  truthfulqa:
+    path: "data/benchmarks/truthfulqa_subset.json"
+    sample_count: 80
+  halueval:
+    path: "data/benchmarks/halueval_subset.json"
+    sample_count: 80
+  rag_subset:
+    path: "data/benchmarks/rag_subset.json"
+    sample_count: 60
+
+predictability_inputs:
+  path: "data/predictability_inputs/input_spectrum.json"
+  total_samples: 200
+
+psc_score:
+  alpha_confidence_weight: 0.5
+  beta_entropy_weight: 0.5
+  warning_threshold: 0.65
+  halt_threshold: 0.85
