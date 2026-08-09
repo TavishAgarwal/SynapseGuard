@@ -1,4 +1,4 @@
-dataset,n,auroc,auroc_ci95_low,auroc_ci95_high,precision,recall,f1_score,optimal_threshold,n_hallucinated,n_factual,note
-truthfulqa,100,1.0,1.0,1.0,1.0,1.0,1.0,0.2911,60,40,ok
-halueval,100,0.9936,0.9809,1.0,0.9259,1.0,0.9615,0.3533,50,50,ok
-rag_grounding,100,0.808,0.7143,0.8973,1.0,0.68,0.8095,0.3247,50,50,ok
+dataset,n_total,n_train,n_test,auroc_heldout,auroc_ci95_low,auroc_ci95_high,optimal_threshold_learned,precision_heldout,recall_heldout,f1_score_heldout,split_ratio,note
+truthfulqa,100,70,30,1.0,1.0,1.0,0.2911,1.0,1.0,1.0,70/30,heldout_eval_ok
+halueval,100,70,30,0.9911,0.9598,1.0,0.3533,0.8824,1.0,0.9375,70/30,heldout_eval_ok
+rag_grounding,100,70,30,0.8444,0.6619,0.9957,0.3247,1.0,0.7333,0.8462,70/30,heldout_eval_ok

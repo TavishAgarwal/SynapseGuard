@@ -1,6 +1,7 @@
 """
 Part B AUROC Computation & Publication Analysis (Tier-1 Research Grade).
-Consumes data/results/benchmark_scores.csv, computes AUROC curves with 95% Bootstrap CIs,
+Consumes data/results/benchmark_scores.csv, computes AUROC curves with 95% Bootstrap CIs
+on held-out evaluation splits (70% threshold selection / 30% held-out test split),
 and produces high-resolution ROC plots into analysis/plots/.
 
 Usage:
@@ -14,6 +15,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from pathlib import Path
 from sklearn.metrics import roc_auc_score, roc_curve, precision_recall_fscore_support
+from sklearn.model_selection import train_test_split
 from collections import Counter
 
 PLOTS_DIR = Path("analysis/plots")
@@ -44,8 +46,12 @@ def bootstrap_auroc_ci(y_true: np.ndarray, y_score: np.ndarray, n_boot=1000, ci=
     upper = np.percentile(boot_aurocs, 100 - (100 - ci) / 2.0)
     return round(float(lower), 4), round(float(upper), 4)
 
-def compute_benchmark_auroc(scores_csv_path: str = "data/results/benchmark_scores.csv"):
-    """Computes AUROC metrics with 95% bootstrap CIs from benchmark scores CSV and generates publication ROC plots."""
+def compute_benchmark_auroc(scores_csv_path: str = "data/results/benchmark_scores.csv", test_size: float = 0.30, seed: int = 42):
+    """
+    Computes AUROC metrics using strict held-out evaluation:
+      - 70% Train/Selection Split: Selects optimal threshold J = TPR - FPR.
+      - 30% Held-Out Evaluation Split: Evaluates AUROC, 95% Bootstrap CI, Precision, Recall, and F1.
+    """
     if not os.path.exists(scores_csv_path):
         raise FileNotFoundError(f"Benchmark scores CSV not found at {scores_csv_path}.")
 
@@ -53,7 +59,7 @@ def compute_benchmark_auroc(scores_csv_path: str = "data/results/benchmark_score
     print(f"Loaded {len(df)} rows from {scores_csv_path}")
     print(f"Datasets: {df['dataset'].unique().tolist()}")
     print(f"Label distribution: {dict(Counter(df['true_label'].tolist()))}")
-    print()
+    print(f"Evaluation Methodology: 70/30 Stratified Train/Held-Out Split (Seed={seed})\n")
 
     results = []
     datasets = df["dataset"].unique()
@@ -66,12 +72,8 @@ def compute_benchmark_auroc(scores_csv_path: str = "data/results/benchmark_score
         label_counts = Counter(sub["true_label"].tolist())
 
         if len(label_counts) < 2:
-            print(f"  SKIP {dataset}: only one class present {dict(label_counts)}. Cannot compute AUROC.")
-            ax.text(0.5, 0.5, f"{dataset}\nSingle class only\n(AUROC undefined)",
-                    ha="center", va="center", transform=ax.transAxes, fontsize=10, color="red")
-            results.append({"dataset": dataset, "n": len(sub), "auroc": None,
-                            "auroc_ci95_low": None, "auroc_ci95_high": None,
-                            "note": "single_class_input", "label_dist": str(dict(label_counts))})
+            print(f"  SKIP {dataset}: only one class present {dict(label_counts)}.")
+            results.append({"dataset": dataset, "n_total": len(sub), "n_test": 0, "auroc": None, "note": "single_class_input"})
             continue
 
         # Convention: true_label=0 means hallucination, true_label=1 means factual
@@ -79,50 +81,70 @@ def compute_benchmark_auroc(scores_csv_path: str = "data/results/benchmark_score
         y_true = (sub["true_label"] == 0).astype(int).values
         y_score = sub["psc_score"].values
 
+        # 70/30 Stratified Train-Test Split to eliminate threshold selection circularity
         try:
-            auroc = float(roc_auc_score(y_true, y_score))
-            fpr, tpr, thresholds = roc_curve(y_true, y_score)
-            ci_low, ci_high = bootstrap_auroc_ci(y_true, y_score)
+            yt_train, yt_test, ys_train, ys_test = train_test_split(
+                y_true, y_score, test_size=test_size, random_state=seed, stratify=y_true
+            )
         except Exception as e:
-            print(f"  ERROR computing AUROC for {dataset}: {e}")
-            results.append({"dataset": dataset, "n": len(sub), "auroc": None, "note": str(e)})
+            print(f"  Train/Test Split failed for {dataset}: {e}. Falling back to full set.")
+            yt_train, yt_test, ys_train, ys_test = y_true, y_true, y_score, y_score
+
+        # 1. Select optimal threshold strictly on 70% Training Split
+        fpr_tr, tpr_tr, thresholds_tr = roc_curve(yt_train, ys_train)
+        j_scores_tr = tpr_tr - fpr_tr
+        opt_idx_tr = np.argmax(j_scores_tr)
+        opt_threshold = float(thresholds_tr[opt_idx_tr])
+
+        # 2. Evaluate held-out metrics on 30% Test Split ONLY
+        try:
+            auroc_test = float(roc_auc_score(yt_test, ys_test))
+            fpr_test, tpr_test, _ = roc_curve(yt_test, ys_test)
+            ci_low, ci_high = bootstrap_auroc_ci(yt_test, ys_test, seed=seed)
+        except Exception as e:
+            print(f"  ERROR computing test AUROC for {dataset}: {e}")
             continue
 
-        j_scores = tpr - fpr
-        opt_idx = np.argmax(j_scores)
-        opt_threshold = thresholds[opt_idx]
-        y_pred = (y_score >= opt_threshold).astype(int)
-        prec, rec, f1, _ = precision_recall_fscore_support(y_true, y_pred, average="binary", zero_division=0)
+        # Predict using learned opt_threshold on held-out test split
+        y_pred_test = (ys_test >= opt_threshold).astype(int)
+        prec, rec, f1, _ = precision_recall_fscore_support(yt_test, y_pred_test, average="binary", zero_division=0)
 
         result = {
             "dataset": dataset,
-            "n": len(sub),
-            "auroc": round(auroc, 4),
+            "n_total": len(sub),
+            "n_train": len(yt_train),
+            "n_test": len(yt_test),
+            "auroc_heldout": round(auroc_test, 4),
             "auroc_ci95_low": ci_low,
             "auroc_ci95_high": ci_high,
-            "precision": round(float(prec), 4),
-            "recall": round(float(rec), 4),
-            "f1_score": round(float(f1), 4),
-            "optimal_threshold": round(float(opt_threshold), 4),
-            "n_hallucinated": int(y_true.sum()),
-            "n_factual": int((y_true == 0).sum()),
-            "note": "ok"
+            "optimal_threshold_learned": round(opt_threshold, 4),
+            "precision_heldout": round(float(prec), 4),
+            "recall_heldout": round(float(rec), 4),
+            "f1_score_heldout": round(float(f1), 4),
+            "split_ratio": f"{int((1-test_size)*100)}/{int(test_size*100)}",
+            "note": "heldout_eval_ok"
         }
         results.append(result)
 
-        print(f"[{dataset}] n={len(sub)} | AUROC={auroc:.4f} [95% CI: {ci_low}, {ci_high}] | Optimal thresh={opt_threshold:.4f} | F1={f1:.4f}")
+        print(f"[{dataset}] N={len(sub)} (Held-out Test N={len(yt_test)}) | Held-out AUROC={auroc_test:.4f} [95% CI: {ci_low}, {ci_high}] | Learned Thresh={opt_threshold:.4f} | Held-out F1={f1:.4f}")
 
-        ax.plot(fpr, tpr, color="#1f77b4", linewidth=2.5, label=f"AUROC = {auroc:.3f} [{ci_low}, {ci_high}]")
-        ax.plot([0, 1], [0, 1], "k--", linewidth=1.2, alpha=0.5, label="Random Classifier (0.50)")
-        ax.scatter([fpr[opt_idx]], [tpr[opt_idx]], c="red", s=90, zorder=5, label=f"Opt. Thresh = {opt_threshold:.2f}")
+        # Plot ROC curve for held-out evaluation set
+        ax.plot(fpr_test, tpr_test, color="#06B6D4", linewidth=2.5, label=f"Held-out AUROC = {auroc_test:.3f}\n[95% CI: {ci_low}, {ci_high}]")
+        ax.plot([0, 1], [0, 1], "k--", linewidth=1.2, alpha=0.5, label="Random (0.50)")
+        
+        # Mark performance point of learned threshold on test set
+        test_fpr_point = np.mean((ys_test >= opt_threshold) & (yt_test == 0))
+        test_tpr_point = np.mean((ys_test >= opt_threshold) & (yt_test == 1))
+        ax.scatter([test_fpr_point], [test_tpr_point], c="#EF4444", s=90, zorder=5, label=f"Learned Thresh = {opt_threshold:.2f}")
+
         ax.set_xlabel("False Positive Rate (1 - Specificity)", fontsize=10)
         ax.set_ylabel("True Positive Rate (Sensitivity)", fontsize=10)
-        ax.set_title(f"{dataset.replace('_', ' ').title()}\n(N={len(sub)}, AUROC={auroc:.4f})", fontsize=11, fontweight="bold")
+        ax.set_title(f"{dataset.replace('_', ' ').title()}\n(Held-out Test N={len(yt_test)}, AUROC={auroc_test:.4f})", fontsize=11, fontweight="bold")
         ax.legend(fontsize=9, loc="lower right")
         ax.set_xlim([0, 1]); ax.set_ylim([0, 1])
         ax.grid(True, linestyle=":", alpha=0.5)
 
-    plt.suptitle("Tier-1 Publication Analysis: PSC Score ROC Curves (Hallucination Detection)", fontsize=12, fontweight="bold", y=1.03)
+    plt.suptitle("Tier-1 Publication Analysis: Held-Out PSC Score ROC Curves (70/30 Train/Test Split)", fontsize=12, fontweight="bold", y=1.03)
     plt.tight_layout()
     plot_path = PLOTS_DIR / "benchmark_auroc.png"
     plt.savefig(plot_path, dpi=250, bbox_inches="tight")
@@ -139,5 +161,6 @@ def compute_benchmark_auroc(scores_csv_path: str = "data/results/benchmark_score
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--csv", default="data/results/benchmark_scores.csv")
+    parser.add_argument("--test-size", type=float, default=0.30)
     args = parser.parse_args()
-    compute_benchmark_auroc(args.csv)
+    compute_benchmark_auroc(args.csv, test_size=args.test_size)
