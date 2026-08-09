@@ -10,7 +10,7 @@
 
 ## Claim Taxonomy
 
-Per DragonForge guidelines and project transparency standards, all claims in this repository are categorized as follows:
+Per project transparency standards, all claims in this repository are categorized as follows:
 - `[ESTABLISHED]`: Directly verified system architecture and empirical artifacts stored in [`data/results/`](file:///Users/tavishagarwal/Desktop/SynapseGuard/data/results/).
 - `[MEASURED]`: Statistically computed metrics (Pearson $r$, Spearman $r$, AUROC scores, 95% CIs) derived directly from raw evaluation data.
 - `[EXPLORATORY]`: Theoretical interpretations, open-ended category behaviors, and scaling projections.
