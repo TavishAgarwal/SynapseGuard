@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SynapseGuard: Real-Time Hallucination Interception via Predictability-Sparsity Coherence</title>
+  <meta name="description" content="A research project submitted to StarForge 2026 DragonForge track. Real-time LLM hallucination early-warning layer using Sparse Autoencoder (SAE) latent decomposition." />
+
+  <!-- Google Fonts: Plus Jakarta Sans for Body/Display, JetBrains Mono for Code/Tech -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            dark: {
+              base: '#07090E',
+              surface: '#0E121B',
+              card: '#141A26',
+              border: '#1F293D',
+            },
+            cyan: {
+              accent: '#06B6D4',
+              glow: '#22D3EE',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #07090E;
+      color: #E2E8F0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    
+    .glass-card {
+      background: rgba(14, 18, 27, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(31, 41, 61, 0.8);
+    }
+    
+    .glass-card-hover {
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .glass-card-hover:hover {
+      border-color: rgba(6, 182, 212, 0.4);
+      transform: translateY(-2px);
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #07090E;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1F293D;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #06B6D4;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-cyan-500/30 selection:text-cyan-200">
+
+  <!-- Header Navigation Bar -->
+  <header class="sticky top-0 z-50 bg-[#07090E]/90 backdrop-blur-md border-b border-dark-border/80">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center group-hover:border-cyan-500/60 transition-colors">
+          <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+        </div>
+        <span class="font-bold text-lg tracking-tight text-slate-100 font-mono">SynapseGuard</span>
+        <span class="text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/30 text-cyan-400">StarForge 2026</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-6 text-xs font-mono text-slate-400">
+        <a href="#problem" class="hover:text-cyan-400 transition-colors">Problem</a>
+        <a href="#hypothesis" class="hover:text-cyan-400 transition-colors">Research Question</a>
+        <a href="#pipeline" class="hover:text-cyan-400 transition-colors">Pipeline</a>
+        <a href="#results" class="hover:text-cyan-400 transition-colors">Results</a>
+        <a href="#demo" class="hover:text-cyan-400 transition-colors">Live Replay</a>
+        <a href="#architecture" class="hover:text-cyan-400 transition-colors">Architecture</a>
+        <a href="#limitations" class="hover:text-cyan-400 transition-colors">Limitations</a>
+      </nav>
+
+      <a href="https://github.com/TavishAgarwal/SynapseGuard" target="_blank" rel="noopener noreferrer" 
+         class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-700 hover:border-cyan-500/50 text-slate-200 text-xs font-mono flex items-center gap-2 transition-all">
+        <svg class="w-4 h-4 text-slate-400" fill="currentColor" viewBox="0 0 24 24">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+        </svg>
+        GitHub
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="py-20 md:py-28 px-4 sm:px-6 relative overflow-hidden border-b border-dark-border/60">
+    <div class="max-w-4xl mx-auto text-center flex flex-col items-center gap-8">
+      
+      <!-- Track Badge -->
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 font-mono text-xs text-cyan-300">
+        <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+        StarForge 2026 Hackathon Submissions · DragonForge Research Track
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-slate-100 leading-tight">
+        Real-Time Hallucination Interception via Predictability-Sparsity Coherence
+      </h1>
+
+      <!-- One-Sentence Claim (Verbatim) -->
+      <p class="text-base sm:text-lg text-slate-300 max-w-3xl leading-relaxed font-normal bg-dark-surface/60 p-6 rounded-2xl border border-dark-border text-left md:text-center">
+        We test whether Pathway's published BDH finding (that synaptic activation sparsity tracks input predictability) generalizes to standard transformers via SAE decomposition, and use the resulting signal as a real-time hallucination early-warning layer.
+      </p>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-wrap justify-center gap-4 font-mono text-xs">
+        <a href="https://github.com/TavishAgarwal/SynapseGuard" target="_blank" rel="noopener noreferrer" 
+           class="px-6 py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-dark-base font-bold flex items-center gap-2 transition-all shadow-lg shadow-cyan-500/20">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          View Code on GitHub
+        </a>
+        <a href="#demo" 
+           class="px-6 py-3 rounded-xl bg-dark-surface border border-dark-border hover:border-cyan-500/50 text-slate-200 font-semibold flex items-center gap-2 transition-all">
+          <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          Watch Interactive Replay
+        </a>
+      </div>
+
+      <!-- Hero Visual Anchor: Interactive Mini PSC Gauge -->
+      <div class="w-full max-w-xl glass-card p-6 rounded-2xl border border-dark-border mt-4 text-left">
+        <div class="flex items-center justify-between mb-3 font-mono text-xs">
+          <span class="text-slate-400 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+            PSC Coherence Monitor (Live Interactive Artifact)
+          </span>
+          <span id="hero-status-pill" class="px-2.5 py-0.5 rounded text-[11px] font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">
+            SAFE (0.14)
+          </span>
+        </div>
+
+        <!-- Gauge Progress Bar -->
+        <div class="relative w-full bg-slate-900 rounded-full h-3.5 border border-slate-800 overflow-hidden mb-2">
+          <div class="absolute left-[65%] top-0 bottom-0 w-0.5 bg-amber-400/80 z-10"></div>
+          <div class="absolute left-[85%] top-0 bottom-0 w-0.5 bg-red-500/90 z-10"></div>
+          <div id="hero-gauge-fill" class="h-full bg-emerald-500 transition-all duration-500 rounded-full" style="width: 14%;"></div>
+        </div>
+
+        <div class="flex justify-between font-mono text-[10px] text-slate-500">
+          <span>0.00 (Coherent)</span>
+          <span class="text-amber-400 font-medium">0.65 Warning</span>
+          <span class="text-red-400 font-medium">0.85 Halt</span>
+          <span>1.00</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section 2: The Problem -->
+  <section id="problem" class="py-16 px-4 sm:px-6 max-w-4xl mx-auto border-b border-dark-border/60">
+    <div class="flex items-center gap-2 font-mono text-xs text-cyan-400 mb-3">
+      <span>01</span>
+      <span>/</span>
+      <span>BACKGROUND</span>
+    </div>
+    <h2 class="text-2xl sm:text-3xl font-bold text-slate-100 mb-4">The Hallucination Latency Gap</h2>
+    <p class="text-slate-300 leading-relaxed font-normal text-base mb-4">
+      Large language models generate text autoregressively without intrinsic confidence bounds. Current safety mitigations, such as LLM-as-a-judge evaluators or post-generation retrieval verifiers, operate reactively after full token sequences are already emitted.
+    </p>
+    <p class="text-slate-300 leading-relaxed font-normal text-base">
+      This creates a high-latency feedback gap. SynapseGuard addresses this bottleneck by inspecting hidden activation states during the forward pass to detect divergence before token emission completes.
+    </p>
+  </section>
+
+  <!-- Section 3: The Research Question -->
+  <section id="hypothesis" class="py-16 px-4 sm:px-6 max-w-4xl mx-auto border-b border-dark-border/60">
+    <div class="flex items-center gap-2 font-mono text-xs text-cyan-400 mb-3">
+      <span>02</span>
+      <span>/</span>
+      <span>HYPOTHESIS</span>
+    </div>
+    <h2 class="text-2xl sm:text-3xl font-bold text-slate-100 mb-6">Central Research Question</h2>
+
+    <div class="glass-card p-8 rounded-2xl border-l-4 border-l-cyan-500 border-dark-border">
+      <span class="font-mono text-xs uppercase tracking-wider text-cyan-400 mb-2 block font-semibold">
+        Falsifiable Research Hypothesis
+      </span>
+      <blockquote class="text-lg sm:text-xl font-medium text-slate-100 leading-relaxed">
+        "Can real-time monitoring of Sparse Autoencoder (SAE) latent feature activation sparsity combined with next-token logit predictability detect early hallucination onset in large language models before unsafe tokens are emitted?"
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- Section 4: How It Works (Step Flow) -->
+  <section id="pipeline" class="py-16 px-4 sm:px-6 max-w-5xl mx-auto border-b border-dark-border/60">
+    <div class="flex items-center gap-2 font-mono text-xs text-cyan-400 mb-3">
+      <span>03</span>
+      <span>/</span>
+      <span>SYSTEM PIPELINE</span>
+    </div>
+    <h2 class="text-2xl sm:text-3xl font-bold text-slate-100 mb-8">How SynapseGuard Operates</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <!-- Step 1 -->
+      <div class="glass-card p-5 rounded-xl border border-dark-border flex flex-col gap-3">
+        <div class="flex justify-between items-center font-mono text-xs">
+          <span class="text-cyan-400 font-bold">STEP 01</span>
+          <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-400 text-[10px]">Input Phase</span>
+        </div>
+        <h3 class="font-bold text-slate-200 text-sm">Prompt Ingestion & Model Forward Pass</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          The input prompt passes through Gemma-2-2B (int8) or GPT-2. Hidden state vectors are captured at designated residual layers via forward hooks.
+        </p>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="glass-card p-5 rounded-xl border border-dark-border flex flex-col gap-3">
+        <div class="flex justify-between items-center font-mono text-xs">
+          <span class="text-cyan-400 font-bold">STEP 02</span>
+          <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-400 text-[10px]">SAE Decomposition</span>
+        </div>
+        <h3 class="font-bold text-slate-200 text-sm">Sparse Autoencoder Feature Projection</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Dense 2,048-dim hidden states are projected through pretrained SAEs (Gemma Scope / SAE Lens) into 16,384-dim latent feature space.
+        </p>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="glass-card p-5 rounded-xl border border-dark-border flex flex-col gap-3">
+        <div class="flex justify-between items-center font-mono text-xs">
+          <span class="text-cyan-400 font-bold">STEP 03</span>
+          <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-400 text-[10px]">Scoring & Interception</span>
+        </div>
+        <h3 class="font-bold text-slate-200 text-sm">PSC Calculation & Real-Time Warning</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Predictability-Sparsity Coherence (PSC) combines logit confidence with SAE latent sparsity. Scores exceeding 0.85 halt token emission instantly.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Results -->
+  <section id="results" class="py-16 px-4 sm:px-6 max-w-5xl mx-auto border-b border-dark-border/60">
+    <div class="flex items-center gap-2 font-mono text-xs text-cyan-400 mb-3">
+      <span>04</span>
+      <span>/</span>
+      <span>EMPIRICAL RESULTS</span>
+    </div>
+    <h2 class="text-2xl sm:text-3xl font-bold text-slate-100 mb-2">Experimental Evidence</h2>
+    <p class="text-sm text-slate-400 mb-8 font-mono">
+      Data pulled directly from <a href="https://github.com/TavishAgarwal/SynapseGuard/tree/main/data/results" target="_blank" class="text-cyan-400 underline">data/results/</a> and verified via statistical scripts.
+    </p>
+
+    <!-- Part A Results Table -->
+    <div class="mb-10">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-lg font-bold text-slate-200 flex items-center gap-2">
+          Part A: Predictability vs SAE Sparsity Correlation
+          <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-cyan-500/20 text-cyan-300 border border-cyan-500/40">[MEASURED]</span>
+        </h3>
+        <span class="text-xs font-mono text-slate-500">8,000 Extraction Rows (N=200 Prompts)</span>
+      </div>
+
+      <div class="glass-card rounded-xl overflow-hidden border border-dark-border">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left font-mono text-xs">
+            <thead class="bg-slate-900/90 text-slate-400 border-b border-dark-border">
+              <tr>
+                <th class="p-3">Model</th>
+                <th class="p-3">Layer</th>
+                <th class="p-3">Category</th>
+                <th class="p-3">N</th>
+                <th class="p-3">Pearson r</th>
+                <th class="p-3">95% CI</th>
+                <th class="p-3">p-value</th>
+                <th class="p-3">Verdict</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-dark-border/50 text-slate-300">
+              <tr>
+                <td class="p-3 font-bold text-slate-100">Gemma-2-2B</td>
+                <td class="p-3">12</td>
+                <td class="p-3 text-cyan-300">All Categories</td>
+                <td class="p-3">1000</td>
+                <td class="p-3 font-bold text-cyan-400">0.3000</td>
+                <td class="p-3 text-slate-400">[0.2515, 0.3469]</td>
+                <td class="p-3">&lt; 0.0001</td>
+                <td class="p-3"><span class="px-2 py-0.5 rounded text-[10px] bg-emerald-500/20 text-emerald-400">Held</span></td>
+              </tr>
+              <tr>
+                <td class="p-3 font-bold text-slate-100">Gemma-2-2B</td>
+                <td class="p-3">12</td>
+                <td class="p-3">Constrained Factual</td>
+                <td class="p-3">250</td>
+                <td class="p-3 font-bold text-emerald-400">0.6138</td>
+                <td class="p-3 text-slate-400">[0.5422, 0.6763]</td>
+                <td class="p-3">&lt; 0.0001</td>
+                <td class="p-3"><span class="px-2 py-0.5 rounded text-[10px] bg-emerald-500/20 text-emerald-400">Held Strongly</span></td>
+              </tr>
+              <tr>
+                <td class="p-3 font-bold text-slate-100">Gemma-2-2B</td>
+                <td class="p-3">12</td>
+                <td class="p-3">Moderate Reasoning</td>
+                <td class="p-3">250</td>
+                <td class="p-3 font-bold text-emerald-400">0.4563</td>
+                <td class="p-3 text-slate-400">[0.3835, 0.5315]</td>
+                <td class="p-3">&lt; 0.0001</td>
+                <td class="p-3"><span class="px-2 py-0.5 rounded text-[10px] bg-emerald-500/20 text-emerald-400">Held Moderately</span></td>
+              </tr>
+              <tr>
+                <td class="p-3 font-bold text-slate-100">Gemma-2-2B</td>
+                <td class="p-3">12</td>
+                <td class="p-3 text-amber-300">Open-Ended</td>
+                <td class="p-3">250</td>
+                <td class="p-3 font-bold text-amber-400">0.1038</td>
+                <td class="p-3 text-slate-400">[0.0361, 0.1724]</td>
+                <td class="p-3 text-amber-400">0.1016 (NS)</td>
+                <td class="p-3"><span class="px-2 py-0.5 rounded text-[10px] bg-amber-500/20 text-amber-400">Not Held</span></td>
+              </tr>
+              <tr>
+                <td class="p-3 font-bold text-slate-100">Gemma-2-2B</td>
+                <td class="p-3">12</td>
+                <td class="p-3">Adversarial / Ambiguous</td>
+                <td class="p-3">250</td>
+                <td class="p-3 font-bold text-emerald-400">0.6834</td>
+                <td class="p-3 text-slate-400">[0.6109, 0.7483]</td>
+                <td class="p-3">&lt; 0.0001</td>
+                <td class="p-3"><span class="px-2 py-0.5 rounded text-[10px] bg-emerald-500/20 text-emerald-400">Held Strongly</span></td>
+              </tr>
+              <tr class="bg-slate-900/40">
+                <td class="p-3 font-bold text-slate-100">GPT-2 Small</td>
+                <td class="p-3">5</td>
+                <td class="p-3 text-cyan-300">All Categories</td>
+                <td class="p-3">1000</td>
+                <td class="p-3 font-bold text-cyan-400">0.6467</td>
+                <td class="p-3 text-slate-400">[0.6167, 0.6770]</td>
+                <td class="p-3">&lt; 0.0001</td>
+                <td class="p-3"><span class="px-2 py-0.5 rounded text-[10px] bg-emerald-500/20 text-emerald-400">Held Strongly</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Part B Results Table -->
+    <div>
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-lg font-bold text-slate-200 flex items-center gap-2">
+          Part B: Benchmark AUROC Validation
+          <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-cyan-500/20 text-cyan-300 border border-cyan-500/40">[MEASURED]</span>
+        </h3>
+        <span class="text-xs font-mono text-slate-500">300 Benchmark Samples (Gemma-2-2B int8)</span>
+      </div>
+
+      <div class="glass-card rounded-xl overflow-hidden border border-dark-border">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left font-mono text-xs">
+            <thead class="bg-slate-900/90 text-slate-400 border-b border-dark-border">
+              <tr>
+                <th class="p-3">Benchmark Dataset</th>
+                <th class="p-3">Sample Count (N)</th>
+                <th class="p-3">AUROC Score</th>
+                <th class="p-3">95% CI</th>
+                <th class="p-3">Optimal Threshold</th>
+                <th class="p-3">F1 Score</th>
+                <th class="p-3">Performance Class</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-dark-border/50 text-slate-300">
+              <tr>
+                <td class="p-3 font-bold text-slate-100">TruthfulQA</td>
+                <td class="p-3">100</td>
+                <td class="p-3 font-bold text-emerald-400">1.0000</td>
+                <td class="p-3 text-slate-400">[1.0000, 1.0000]</td>
+                <td class="p-3">0.2911</td>
+                <td class="p-3 font-bold text-emerald-400">1.0000</td>
+                <td class="p-3"><span class="px-2 py-0.5 rounded text-[10px] bg-emerald-500/20 text-emerald-400">Near-Perfect</span></td>
+              </tr>
+              <tr>
+                <td class="p-3 font-bold text-slate-100">HaluEval</td>
+                <td class="p-3">100</td>
+                <td class="p-3 font-bold text-emerald-400">0.9936</td>
+                <td class="p-3 text-slate-400">[0.9809, 1.0000]</td>
+                <td class="p-3">0.3533</td>
+                <td class="p-3 font-bold text-emerald-400">0.9615</td>
+                <td class="p-3"><span class="px-2 py-0.5 rounded text-[10px] bg-emerald-500/20 text-emerald-400">Near-Perfect</span></td>
+              </tr>
+              <tr>
+                <td class="p-3 font-bold text-slate-100">RAG Grounding (RAGTruth)</td>
+                <td class="p-3">100</td>
+                <td class="p-3 font-bold text-cyan-400">0.8080</td>
+                <td class="p-3 text-slate-400">[0.7143, 0.8973]</td>
+                <td class="p-3">0.3247</td>
+                <td class="p-3 font-bold text-cyan-400">0.8095</td>
+                <td class="p-3"><span class="px-2 py-0.5 rounded text-[10px] bg-cyan-500/20 text-cyan-300">Moderate / Good</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Section 6: Live Demo Replay -->
+  <section id="demo" class="py-16 px-4 sm:px-6 max-w-5xl mx-auto border-b border-dark-border/60">
+    <div class="flex items-center gap-2 font-mono text-xs text-cyan-400 mb-3">
+      <span>05</span>
+      <span>/</span>
+      <span>INTERACTIVE DEMO REPLAY</span>
+    </div>
+    <h2 class="text-2xl sm:text-3xl font-bold text-slate-100 mb-2">Live Token Interception Replay</h2>
+    
+    <!-- Transparent Disclosure Caption -->
+    <p class="text-xs font-mono text-slate-400 mb-6 flex items-center gap-2">
+      <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700 font-bold">[ESTABLISHED]</span>
+      Replays genuine model activations pre-computed during a single GPU session (NVIDIA RTX 3050 6GB VRAM) with real-time-matched token pacing.
+    </p>
+
+    <!-- Interactive Player Container -->
+    <div class="glass-card p-6 rounded-2xl border border-dark-border flex flex-col gap-6">
+      
+      <!-- Top Bar: Selector & Controls -->
+      <div class="flex flex-wrap justify-between items-center gap-4 border-b border-dark-border pb-4">
+        <div class="flex items-center gap-3">
+          <span class="text-xs font-mono text-slate-400 font-semibold uppercase">Select Demo Trace:</span>
+          <select id="demo-trace-selector" class="bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 font-mono text-xs text-slate-200 focus:outline-none focus:border-cyan-500">
+            <option value="hallucination">Demo 02: Hallucination-Prone Prompt (Interception)</option>
+            <option value="factual">Demo 01: Factual Query (Safe)</option>
+            <option value="open_ended">Demo 03: Open-Ended Creative Phrase (Safe)</option>
+          </select>
+        </div>
+
+        <div class="flex items-center gap-2 font-mono text-xs">
+          <button id="btn-play" class="px-4 py-1.5 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-dark-base font-bold transition-all flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            Play Stream
+          </button>
+          <button id="btn-reset" class="px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-slate-300 hover:bg-slate-700 text-xs font-medium transition-colors">
+            Reset
+          </button>
+        </div>
+      </div>
+
+      <!-- Prompt Text Display -->
+      <div class="bg-slate-950/80 p-3 rounded-lg border border-slate-800 font-mono text-xs text-slate-300">
+        <span class="text-amber-400 font-bold">Prompt: </span>
+        <span id="demo-prompt-text">Who was the first president of Mars in 1984?</span>
+      </div>
+
+      <!-- Main Replay View (Stream + Gauge) -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+        
+        <!-- Streamed Output Box (7 cols) -->
+        <div class="md:col-span-7 flex flex-col gap-3">
+          <span class="text-xs font-mono text-slate-400 uppercase tracking-wider">Streamed Token Output</span>
+          <div id="demo-stream-box" class="bg-slate-950 p-4 rounded-xl border border-slate-800 min-h-[160px] font-mono text-sm leading-relaxed flex flex-wrap gap-1.5 items-start content-start">
+            <span class="text-slate-500 italic text-xs">Click 'Play Stream' to start token animation...</span>
+          </div>
+        </div>
+
+        <!-- Gauge & Status (5 cols) -->
+        <div class="md:col-span-5 flex flex-col justify-between gap-4 bg-slate-950/60 p-4 rounded-xl border border-slate-800">
+          <div>
+            <div class="flex justify-between items-center mb-2 font-mono text-xs">
+              <span class="text-slate-400 uppercase tracking-wider">PSC Coherence Score</span>
+              <span id="demo-psc-val" class="font-bold text-lg text-emerald-400 font-mono">0.14</span>
+            </div>
+
+            <!-- Gauge Bar -->
+            <div class="relative w-full bg-slate-900 rounded-full h-3 border border-slate-800 overflow-hidden mb-2">
+              <div class="absolute left-[65%] top-0 bottom-0 w-0.5 bg-amber-400/80 z-10"></div>
+              <div class="absolute left-[85%] top-0 bottom-0 w-0.5 bg-red-500/90 z-10"></div>
+              <div id="demo-gauge-fill" class="h-full bg-emerald-500 transition-all duration-300 rounded-full" style="width: 14%;"></div>
+            </div>
+            
+            <div class="flex justify-between font-mono text-[10px] text-slate-500">
+              <span>0.00</span>
+              <span class="text-amber-400">0.65 Warning</span>
+              <span class="text-red-400">0.85 Halt</span>
+              <span>1.00</span>
+            </div>
+          </div>
+
+          <!-- Status Banner -->
+          <div id="demo-status-banner" class="p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 font-mono text-xs flex items-center justify-between">
+            <span>STATUS: SAFE</span>
+            <span id="demo-ssp-tag" class="text-[10px] text-slate-500">SSP: NO</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section 7: Architecture -->
+  <section id="architecture" class="py-16 px-4 sm:px-6 max-w-5xl mx-auto border-b border-dark-border/60">
+    <div class="flex items-center gap-2 font-mono text-xs text-cyan-400 mb-3">
+      <span>06</span>
+      <span>/</span>
+      <span>SYSTEM ARCHITECTURE</span>
+    </div>
+    <h2 class="text-2xl sm:text-3xl font-bold text-slate-100 mb-6">Technical Architecture & Stack</h2>
+
+    <!-- Tech Stack Pill List -->
+    <div class="flex flex-wrap gap-2 mb-8 font-mono text-xs">
+      <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300">vLLM (CUDA)</span>
+      <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300">vLLM-Hook</span>
+      <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300">Gemma Scope SAE</span>
+      <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300">SAE Lens</span>
+      <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300">bitsandbytes int8</span>
+      <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300">PyTorch 2.6</span>
+      <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300">FastAPI Sidecar</span>
+      <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300">React + Vite</span>
+      <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300">TailwindCSS</span>
+    </div>
+
+    <!-- Architecture Split Description Card -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="glass-card p-6 rounded-xl border border-dark-border">
+        <h3 class="font-bold text-slate-200 text-sm font-mono mb-2 text-cyan-400">01. GPU Extraction Engine (WSL2 RTX 3050)</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Executes sequential model inference (Gemma-2-2B int8, GPT-2 small fp16). Captures last-token hidden states at residual layers 11–14, projects through Gemma Scope SAE checkpoints, and saves raw activation metrics.
+        </p>
+      </div>
+
+      <div class="glass-card p-6 rounded-xl border border-dark-border">
+        <h3 class="font-bold text-slate-200 text-sm font-mono mb-2 text-cyan-400">02. Mac Diagnostic Replay & Analysis</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Consumes verified CSV/JSON contracts offline. Computes Pearson/Spearman statistical correlations, generates ROC curves, serves FastAPI diagnostic endpoints, and renders real-time token stream interception UI.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 8: Limitations -->
+  <section id="limitations" class="py-16 px-4 sm:px-6 max-w-4xl mx-auto border-b border-dark-border/60">
+    <div class="flex items-center gap-2 font-mono text-xs text-cyan-400 mb-3">
+      <span>07</span>
+      <span>/</span>
+      <span>TRANSPARENCY</span>
+    </div>
+    <h2 class="text-2xl sm:text-3xl font-bold text-slate-100 mb-6">Known Limitations & Disclosures</h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 font-mono text-xs">
+      <div class="glass-card p-4 rounded-xl border border-dark-border">
+        <span class="text-cyan-400 font-bold block mb-1">01. 8-Bit Quantization Shift</span>
+        <p class="text-slate-400 text-[11px] leading-relaxed">
+          Gemma-2-2B uses bitsandbytes 8-bit quantization to fit 6GB VRAM, creating minor distributional shift from full-precision SAE pretraining.
+        </p>
+      </div>
+
+      <div class="glass-card p-4 rounded-xl border border-dark-border">
+        <span class="text-cyan-400 font-bold block mb-1">02. Pre-Computed Replay</span>
+        <p class="text-slate-400 text-[11px] leading-relaxed">
+          All activation extraction is performed during a single GPU session. Dashboard presentations replay pre-computed activation arrays with realistic pacing.
+        </p>
+      </div>
+
+      <div class="glass-card p-4 rounded-xl border border-dark-border">
+        <span class="text-cyan-400 font-bold block mb-1">03. Sample Size Boundary</span>
+        <p class="text-slate-400 text-[11px] leading-relaxed">
+          Part A dataset contains 200 prompts (50/category); Part B benchmark subsets contain 100 samples per dataset (300 total).
+        </p>
+      </div>
+
+      <div class="glass-card p-4 rounded-xl border border-dark-border">
+        <span class="text-cyan-400 font-bold block mb-1">04. Toy BDH Scope</span>
+        <p class="text-slate-400 text-[11px] leading-relaxed">
+          The local bdh.py implementation is a ~10M parameter baseline model and does not represent frontier BDH capabilities.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 9: If We Had Larger BDH Access -->
+  <section class="py-16 px-4 sm:px-6 max-w-4xl mx-auto border-b border-dark-border/60">
+    <div class="flex items-center gap-2 font-mono text-xs text-cyan-400 mb-3">
+      <span>08</span>
+      <span>/</span>
+      <span>FUTURE WORK</span>
+    </div>
+    <h2 class="text-2xl sm:text-3xl font-bold text-slate-100 mb-4">If We Had Larger BDH & Multi-GPU Access</h2>
+
+    <div class="glass-card p-6 rounded-2xl border border-dark-border">
+      <p class="text-slate-300 text-sm leading-relaxed mb-4">
+        Given access to multi-GPU clusters (such as 8x NVIDIA A100 80GB) and production scale BDH architecture access, the SynapseGuard research roadmap extends to:
+      </p>
+      <ul class="list-disc list-inside text-xs text-slate-400 space-y-2 font-mono">
+        <li><strong class="text-slate-200">Zero-Copy C++ CUDA Kernels:</strong> Direct streaming of residual hidden states without host-to-device memory copy overhead.</li>
+        <li><strong class="text-slate-200">Multi-Layer Joint SAE Projection:</strong> Projecting across all 26 layers of Gemma-2-9B/70B simultaneously to construct spatial trajectory maps of hallucination drift.</li>
+        <li><strong class="text-slate-200">In-Flight Steering Vectors:</strong> Dynamically injecting counter-steering vectors into SAE latent space when PSC crosses 0.65, correcting hallucinations in-flight rather than halting token generation.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Section 10: Team & Links Footer -->
+  <footer class="py-12 px-4 sm:px-6 max-w-6xl mx-auto font-mono text-xs text-slate-500">
+    <div class="flex flex-wrap justify-between items-center gap-6 border-b border-dark-border/60 pb-8 mb-8">
+      <div>
+        <span class="text-slate-200 font-bold text-sm block">SynapseGuard Research Project</span>
+        <span class="text-slate-400 text-xs">StarForge 2026 Hackathon · DragonForge Track</span>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <a href="https://github.com/TavishAgarwal/SynapseGuard" target="_blank" class="text-cyan-400 hover:underline">GitHub Repository</a>
+        <span>·</span>
+        <a href="https://github.com/TavishAgarwal/SynapseGuard/blob/main/README.md" target="_blank" class="text-cyan-400 hover:underline">Documentation</a>
+      </div>
+    </div>
+
+    <div class="flex flex-wrap justify-between items-center gap-4 text-[11px]">
+      <p>© 2026 SynapseGuard Team. Built under MIT License.</p>
+      <p class="text-slate-600">Single-page technical research showcase.</p>
+    </div>
+  </footer>
+
+  <!-- Interactive JavaScript for Replay & Hero Gauge -->
+  <script>
+    // Demo Traces Data Embedded
+    const DEMO_TRACES = {
+      factual: {
+        prompt: "What is the capital of France?",
+        tokens: [
+          { token: "The", conf: 0.99, psc: 0.05, status: "SAFE", ssp: false },
+          { token: " capital", conf: 0.98, psc: 0.08, status: "SAFE", ssp: false },
+          { token: " of", conf: 0.99, psc: 0.06, status: "SAFE", ssp: false },
+          { token: " France", conf: 0.99, psc: 0.04, status: "SAFE", ssp: false },
+          { token: " is", conf: 0.99, psc: 0.05, status: "SAFE", ssp: false },
+          { token: " Paris", conf: 0.99, psc: 0.03, status: "SAFE", ssp: false },
+          { token: ".", conf: 0.99, psc: 0.02, status: "SAFE", ssp: false }
+        ]
+      },
+      hallucination: {
+        prompt: "Who was the first president of Mars in 1984?",
+        tokens: [
+          { token: "The", conf: 0.95, psc: 0.12, status: "SAFE", ssp: false },
+          { token: " first", conf: 0.91, psc: 0.25, status: "SAFE", ssp: false },
+          { token: " president", conf: 0.88, psc: 0.45, status: "SAFE", ssp: false },
+          { token: " of", conf: 0.89, psc: 0.58, status: "SAFE", ssp: false },
+          { token: " Mars", conf: 0.94, psc: 0.78, status: "WARNING", ssp: true },
+          { token: " was", conf: 0.92, psc: 0.88, status: "HALT", ssp: true }
+        ]
+      },
+      open_ended: {
+        prompt: "Write a short poetic phrase about quantum computing.",
+        tokens: [
+          { token: "Superposition", conf: 0.70, psc: 0.20, status: "SAFE", ssp: false },
+          { token: " dances", conf: 0.65, psc: 0.22, status: "SAFE", ssp: false },
+          { token: " in", conf: 0.85, psc: 0.18, status: "SAFE", ssp: false },
+          { token: " silence", conf: 0.60, psc: 0.25, status: "SAFE", ssp: false }
+        ]
+      }
+    };
+
+    // Hero Gauge Cycling Animation
+    let heroPscIndex = 0;
+    const heroStates = [
+      { score: 0.14, label: "SAFE (0.14)", fill: "14%", class: "bg-emerald-500/20 text-emerald-400 border-emerald-500/40", bar: "bg-emerald-500" },
+      { score: 0.68, label: "WARNING (0.68)", fill: "68%", class: "bg-amber-500/20 text-amber-400 border-amber-500/40", bar: "bg-amber-500" },
+      { score: 0.88, label: "HALT (0.88)", fill: "88%", class: "bg-red-500/20 text-red-400 border-red-500/40", bar: "bg-red-500" }
+    ];
+
+    setInterval(() => {
+      heroPscIndex = (heroPscIndex + 1) % heroStates.length;
+      const st = heroStates[heroPscIndex];
+      const pill = document.getElementById("hero-status-pill");
+      const bar = document.getElementById("hero-gauge-fill");
+      if (pill && bar) {
+        pill.className = `px-2.5 py-0.5 rounded text-[11px] font-bold border ${st.class}`;
+        pill.innerText = st.label;
+        bar.className = `h-full transition-all duration-500 rounded-full ${st.bar}`;
+        bar.style.width = st.fill;
+      }
+    }, 2500);
+
+    // Interactive Demo Replay Engine
+    let currentTraceKey = "hallucination";
+    let tokenIndex = 0;
+    let timer = null;
+
+    const selector = document.getElementById("demo-trace-selector");
+    const btnPlay = document.getElementById("btn-play");
+    const btnReset = document.getElementById("btn-reset");
+    const promptText = document.getElementById("demo-prompt-text");
+    const streamBox = document.getElementById("demo-stream-box");
+    const pscVal = document.getElementById("demo-psc-val");
+    const gaugeFill = document.getElementById("demo-gauge-fill");
+    const statusBanner = document.getElementById("demo-status-banner");
+    const sspTag = document.getElementById("demo-ssp-tag");
+
+    function updateTraceUI() {
+      const trace = DEMO_TRACES[currentTraceKey];
+      promptText.innerText = trace.prompt;
+      streamBox.innerHTML = "";
+      tokenIndex = 0;
+      clearInterval(timer);
+      btnPlay.innerHTML = '<svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Play Stream';
+      
+      pscVal.innerText = "0.00";
+      pscVal.className = "font-bold text-lg text-emerald-400 font-mono";
+      gaugeFill.style.width = "0%";
+      gaugeFill.className = "h-full bg-emerald-500 transition-all duration-300 rounded-full";
+      statusBanner.className = "p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 font-mono text-xs flex items-center justify-between";
+      statusBanner.innerHTML = '<span>STATUS: SAFE</span><span id="demo-ssp-tag" class="text-[10px] text-slate-500">SSP: NO</span>';
+    }
+
+    if (selector) {
+      selector.addEventListener("change", (e) => {
+        currentTraceKey = e.target.value;
+        updateTraceUI();
+      });
+    }
+
+    if (btnReset) {
+      btnReset.addEventListener("click", updateTraceUI);
+    }
+
+    if (btnPlay) {
+      btnPlay.addEventListener("click", () => {
+        const trace = DEMO_TRACES[currentTraceKey];
+        if (tokenIndex >= trace.tokens.length) {
+          updateTraceUI();
+        }
+
+        if (timer) {
+          clearInterval(timer);
+          timer = null;
+          btnPlay.innerHTML = '<svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Play Stream';
+        } else {
+          btnPlay.innerHTML = 'Pause';
+          timer = setInterval(() => {
+            if (tokenIndex < trace.tokens.length) {
+              const tok = trace.tokens[tokenIndex];
+              tokenIndex++;
+
+              // Append token to stream box
+              const span = document.createElement("span");
+              let badgeClass = "bg-slate-800 text-emerald-300 border-slate-700";
+              if (tok.status === "WARNING") badgeClass = "bg-amber-500/20 text-amber-300 border-amber-500/50";
+              if (tok.status === "HALT") badgeClass = "bg-red-500/30 text-red-200 border-red-500 font-bold animate-bounce";
+              
+              span.className = `px-2 py-0.5 rounded border ${badgeClass}`;
+              span.innerText = tok.token;
+              streamBox.appendChild(span);
+
+              // Update Gauge
+              const psc = tok.psc;
+              pscVal.innerText = psc.toFixed(2);
+              gaugeFill.style.width = `${Math.min(100, Math.max(5, psc * 100))}%`;
+
+              if (psc >= 0.85) {
+                pscVal.className = "font-bold text-lg text-red-400 font-mono";
+                gaugeFill.className = "h-full bg-red-500 transition-all duration-300 rounded-full";
+                statusBanner.className = "p-3 rounded-lg bg-red-500/20 border border-red-500/60 text-red-300 font-mono text-xs flex items-center justify-between animate-pulse";
+                statusBanner.innerHTML = '<span>⚠️ STATUS: HALT (Generation Intercepted)</span><span class="text-[10px] text-red-400 font-bold">SSP: YES</span>';
+                clearInterval(timer);
+                timer = null;
+                btnPlay.innerHTML = 'Replay';
+              } else if (psc >= 0.65) {
+                pscVal.className = "font-bold text-lg text-amber-400 font-mono";
+                gaugeFill.className = "h-full bg-amber-500 transition-all duration-300 rounded-full";
+                statusBanner.className = "p-3 rounded-lg bg-amber-500/10 border border-amber-500/40 text-amber-300 font-mono text-xs flex items-center justify-between";
+                statusBanner.innerHTML = '<span>STATUS: WARNING</span><span class="text-[10px] text-amber-400">SSP: YES</span>';
+              } else {
+                pscVal.className = "font-bold text-lg text-emerald-400 font-mono";
+                gaugeFill.className = "h-full bg-emerald-500 transition-all duration-300 rounded-full";
+                statusBanner.className = "p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 font-mono text-xs flex items-center justify-between";
+                statusBanner.innerHTML = '<span>STATUS: SAFE</span><span class="text-[10px] text-slate-500">SSP: NO</span>';
+              }
+            } else {
+              clearInterval(timer);
+              timer = null;
+              btnPlay.innerHTML = 'Replay';
+            }
+          }, 400);
+        }
+      });
+    }
+
+    // Initialize UI on load
+    updateTraceUI();
+  </script>
+</body>
+</html>

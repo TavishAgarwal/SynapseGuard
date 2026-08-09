@@ -1,5 +1,7 @@
 # SynapseGuard: Real-Time Hallucination Interception via Predictability-Sparsity Coherence (PSC)
 
+🌐 **[Public Research Paper Landing Page](index.html)** | 📊 **[Interactive Dashboard](part_b_diagnostic/dashboard/)**
+
 > **Research Question:** *Can real-time monitoring of Sparse Autoencoder (SAE) latent feature activation sparsity combined with next-token logit predictability detect early hallucination onset in large language models before unsafe tokens are emitted?*
 >
 > **Primary Claim:** `[MEASURED]` Predictability-Sparsity Coherence (PSC) scoring achieves early hallucination detection across TruthfulQA ($\text{AUROC} = 1.0000$), HaluEval ($\text{AUROC} = 0.9936$), and RAG Grounding ($\text{AUROC} = 0.8080$), while next-token logit predictability positively correlates with SAE latent sparsity ($r = 0.30 - 0.65, p < 10^{-4}$) in factual and reasoning domains.
