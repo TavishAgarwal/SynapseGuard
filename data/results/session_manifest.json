@@ -1,16 +1,25 @@
 {
-  "session_date": "2026-08-09T10:29:51.509363+00:00",
-  "git_commit_hash": "uncommitted-initial-repo",
+  "session_date": "2026-08-09T17:03:10.192080+00:00",
+  "git_commit_hash": "a183fc988163ef27bf761954ff3e76e1e1310f36",
   "random_seed": 42,
-  "python_version": "3.14.6",
-  "pytorch_version": "2.13.0",
+  "python_version": "3.11.9",
+  "pytorch_version": "2.6.0+cu124",
+  "library_versions": {
+    "transformers": "5.14.1",
+    "sae_lens": "6.49.0",
+    "bitsandbytes": "0.50.0",
+    "accelerate": "1.14.0",
+    "pandas": "3.0.5",
+    "scipy": "1.15.3",
+    "scikit-learn": "1.7.2"
+  },
   "models": [
     "google/gemma-2-2b (int8)",
     "gpt2 (fp16)"
   ],
   "model_commit_hashes": {
-    "gemma-2-2b": "mock-commit-hash-gemma2b",
-    "gpt2": "mock-commit-hash-gpt2"
+    "gemma-2-2b": "c5ebcd40d208330abc697524c919956e692655cf",
+    "gpt2": "607a30d783dfa663caf39e06633721c8d4cfcd7e"
   },
   "execution_order": [
     "gemma-2-2b (sequential)",
@@ -46,8 +55,8 @@
       8
     ]
   },
-  "part_a_sample_count": 0,
-  "part_a_total_extraction_rows": 0,
+  "part_a_sample_count": 200,
+  "part_a_total_extraction_rows": 1600,
   "benchmark_sample_counts": {
     "truthfulqa": 80,
     "halueval": 80,

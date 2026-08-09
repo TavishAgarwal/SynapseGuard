@@ -4,57 +4,81 @@
   "tokens": [
     {
       "position": 0,
-      "token_text": "The",
-      "logit_confidence": 0.99,
-      "psc_score": 0.05,
+      "token_text": "\n\n",
+      "logit_confidence": 0.6173,
+      "psc_score": 0.193,
       "status": "SAFE",
       "ssp_triggered": false
     },
     {
       "position": 1,
-      "token_text": " capital",
-      "logit_confidence": 0.98,
-      "psc_score": 0.08,
+      "token_text": "What",
+      "logit_confidence": 0.2486,
+      "psc_score": 0.3777,
       "status": "SAFE",
       "ssp_triggered": false
     },
     {
       "position": 2,
-      "token_text": " of",
-      "logit_confidence": 0.99,
-      "psc_score": 0.06,
+      "token_text": " is",
+      "logit_confidence": 0.7198,
+      "psc_score": 0.1415,
       "status": "SAFE",
       "ssp_triggered": false
     },
     {
       "position": 3,
-      "token_text": " France",
-      "logit_confidence": 0.99,
-      "psc_score": 0.04,
+      "token_text": " the",
+      "logit_confidence": 0.895,
+      "psc_score": 0.0541,
       "status": "SAFE",
       "ssp_triggered": false
     },
     {
       "position": 4,
-      "token_text": " is",
-      "logit_confidence": 0.99,
-      "psc_score": 0.05,
+      "token_text": " capital",
+      "logit_confidence": 0.3788,
+      "psc_score": 0.3119,
       "status": "SAFE",
       "ssp_triggered": false
     },
     {
       "position": 5,
-      "token_text": " Paris",
-      "logit_confidence": 0.99,
-      "psc_score": 0.03,
+      "token_text": " of",
+      "logit_confidence": 0.966,
+      "psc_score": 0.02,
       "status": "SAFE",
       "ssp_triggered": false
     },
     {
       "position": 6,
-      "token_text": ".",
-      "logit_confidence": 0.99,
-      "psc_score": 0.02,
+      "token_text": " France",
+      "logit_confidence": 0.5312,
+      "psc_score": 0.2366,
+      "status": "SAFE",
+      "ssp_triggered": false
+    },
+    {
+      "position": 7,
+      "token_text": "?",
+      "logit_confidence": 0.9406,
+      "psc_score": 0.0324,
+      "status": "SAFE",
+      "ssp_triggered": false
+    },
+    {
+      "position": 8,
+      "token_text": "\n\n",
+      "logit_confidence": 0.8423,
+      "psc_score": 0.0805,
+      "status": "SAFE",
+      "ssp_triggered": false
+    },
+    {
+      "position": 9,
+      "token_text": "What",
+      "logit_confidence": 0.4047,
+      "psc_score": 0.2994,
       "status": "SAFE",
       "ssp_triggered": false
     }
@@ -67,7 +91,7 @@
       13,
       14
     ],
-    "commit_hash": "mock-commit-hash-gemma2b",
-    "session_timestamp": "2026-08-09T10:29:51.541105+00:00"
+    "commit_hash": "c5ebcd40d208330abc697524c919956e692655cf",
+    "session_timestamp": "2026-08-09T17:06:55.228977+00:00"
   }
 }

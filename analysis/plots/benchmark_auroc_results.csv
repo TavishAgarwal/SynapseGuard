@@ -1,0 +1,4 @@
+dataset,n,auroc,n_hallucinated,n_factual,note
+truthfulqa,80,1.0,40,40,ok
+halueval,80,1.0,40,40,ok
+rag_grounding,60,1.0,30,30,ok

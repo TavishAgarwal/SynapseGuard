@@ -4,33 +4,81 @@
   "tokens": [
     {
       "position": 0,
-      "token_text": "Superposition",
-      "logit_confidence": 0.7,
-      "psc_score": 0.2,
+      "token_text": "\n\n",
+      "logit_confidence": 0.6904,
+      "psc_score": 0.1568,
       "status": "SAFE",
       "ssp_triggered": false
     },
     {
       "position": 1,
-      "token_text": " dances",
-      "logit_confidence": 0.65,
-      "psc_score": 0.22,
+      "token_text": "A",
+      "logit_confidence": 0.1211,
+      "psc_score": 0.4411,
       "status": "SAFE",
       "ssp_triggered": false
     },
     {
       "position": 2,
-      "token_text": " in",
-      "logit_confidence": 0.85,
-      "psc_score": 0.18,
+      "token_text": " ",
+      "logit_confidence": 0.1716,
+      "psc_score": 0.4156,
       "status": "SAFE",
       "ssp_triggered": false
     },
     {
       "position": 3,
-      "token_text": " silence",
-      "logit_confidence": 0.6,
-      "psc_score": 0.25,
+      "token_text": "1",
+      "logit_confidence": 0.2808,
+      "psc_score": 0.3608,
+      "status": "SAFE",
+      "ssp_triggered": false
+    },
+    {
+      "position": 4,
+      "token_text": ".",
+      "logit_confidence": 0.3081,
+      "psc_score": 0.347,
+      "status": "SAFE",
+      "ssp_triggered": false
+    },
+    {
+      "position": 5,
+      "token_text": "0",
+      "logit_confidence": 0.364,
+      "psc_score": 0.3192,
+      "status": "SAFE",
+      "ssp_triggered": false
+    },
+    {
+      "position": 6,
+      "token_text": "0",
+      "logit_confidence": 0.435,
+      "psc_score": 0.2847,
+      "status": "SAFE",
+      "ssp_triggered": false
+    },
+    {
+      "position": 7,
+      "token_text": "-",
+      "logit_confidence": 0.7257,
+      "psc_score": 0.14,
+      "status": "SAFE",
+      "ssp_triggered": false
+    },
+    {
+      "position": 8,
+      "token_text": "kg",
+      "logit_confidence": 0.3019,
+      "psc_score": 0.3513,
+      "status": "SAFE",
+      "ssp_triggered": false
+    },
+    {
+      "position": 9,
+      "token_text": " block",
+      "logit_confidence": 0.5005,
+      "psc_score": 0.2531,
       "status": "SAFE",
       "ssp_triggered": false
     }
@@ -43,7 +91,7 @@
       13,
       14
     ],
-    "commit_hash": "mock-commit-hash-gemma2b",
-    "session_timestamp": "2026-08-09T10:29:51.541105+00:00"
+    "commit_hash": "c5ebcd40d208330abc697524c919956e692655cf",
+    "session_timestamp": "2026-08-09T17:06:55.228977+00:00"
   }
 }

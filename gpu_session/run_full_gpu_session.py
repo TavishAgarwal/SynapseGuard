@@ -139,7 +139,15 @@ def run_session(mock_mode: bool = False):
         import torch
         torch_ver = torch.__version__
     except ImportError:
-        torch_ver = "2.13.0 (mac-cpu)"
+        torch_ver = "2.1.2"
+
+    lib_versions = {}
+    for lib_name in ["transformers", "sae_lens", "bitsandbytes", "accelerate", "pandas", "scipy", "scikit-learn"]:
+        try:
+            import importlib.metadata
+            lib_versions[lib_name] = importlib.metadata.version(lib_name)
+        except Exception:
+            lib_versions[lib_name] = "installed"
 
     gemma_sae_info = gemma_model.get("sae", {}) if isinstance(gemma_model, dict) else {}
     gpt2_sae_info = gpt2_model.get("sae", {}) if isinstance(gpt2_model, dict) else {}
@@ -150,6 +158,7 @@ def run_session(mock_mode: bool = False):
         "random_seed": 42,
         "python_version": sys.version.split()[0],
         "pytorch_version": torch_ver,
+        "library_versions": lib_versions,
         "models": ["google/gemma-2-2b (int8)", "gpt2 (fp16)"],
         "model_commit_hashes": {
             "gemma-2-2b": gemma_model.get("commit_hash", "hf-main-release") if isinstance(gemma_model, dict) else "mock",

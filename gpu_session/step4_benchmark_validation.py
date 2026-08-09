@@ -57,8 +57,15 @@ def run_benchmark_validation(
     model_name = model_handle.get("name", "gemma-2-2b-8bit")
     backend = model_handle.get("backend", "mock")
     sae_handle = model_handle.get("sae")
-    target_layers = model_handle.get("target_layers", [12])
-    target_layer = target_layers[0] if target_layers else 12
+    sae_info = sae_handle if isinstance(sae_handle, dict) else {}
+    sae_id_str = str(sae_info.get("sae_id", ""))
+    if "layer_12" in sae_id_str:
+        target_layer = 12
+    elif "blocks.6" in sae_id_str:
+        target_layer = 6
+    else:
+        target_layers = model_handle.get("target_layers", [12])
+        target_layer = 12 if 12 in target_layers else target_layers[0]
     
     for ds_name, filename in benchmark_files:
         file_path = os.path.join(benchmarks_dir, filename)
@@ -73,6 +80,8 @@ def run_benchmark_validation(
         for sample in samples:
             sample_id = sample.get("sample_id", f"{ds_name}_unknown")
             prompt = sample.get("prompt", "")
+            if not prompt or not isinstance(prompt, str):
+                raise ValueError(f"CRITICAL ERROR: Sample {sample_id} in {filename} has missing or non-string 'prompt'.")
             if "true_label" not in sample:
                 raise KeyError(f"CRITICAL ERROR: Sample {sample_id} in {filename} is missing mandatory 'true_label' field.")
             true_label = int(sample["true_label"])

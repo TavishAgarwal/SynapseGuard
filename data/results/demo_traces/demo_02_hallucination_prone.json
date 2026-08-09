@@ -4,51 +4,83 @@
   "tokens": [
     {
       "position": 0,
-      "token_text": "The",
-      "logit_confidence": 0.95,
-      "psc_score": 0.12,
+      "token_text": "\n\n",
+      "logit_confidence": 0.6005,
+      "psc_score": 0.2014,
       "status": "SAFE",
       "ssp_triggered": false
     },
     {
       "position": 1,
-      "token_text": " first",
-      "logit_confidence": 0.91,
-      "psc_score": 0.25,
+      "token_text": "Who",
+      "logit_confidence": 0.1903,
+      "psc_score": 0.4066,
       "status": "SAFE",
       "ssp_triggered": false
     },
     {
       "position": 2,
-      "token_text": " president",
-      "logit_confidence": 0.88,
-      "psc_score": 0.45,
+      "token_text": " was",
+      "logit_confidence": 0.5721,
+      "psc_score": 0.2158,
       "status": "SAFE",
       "ssp_triggered": false
     },
     {
       "position": 3,
-      "token_text": " of",
-      "logit_confidence": 0.89,
-      "psc_score": 0.58,
+      "token_text": " the",
+      "logit_confidence": 0.9047,
+      "psc_score": 0.049,
       "status": "SAFE",
       "ssp_triggered": false
     },
     {
       "position": 4,
-      "token_text": " Mars",
-      "logit_confidence": 0.94,
-      "psc_score": 0.78,
-      "status": "WARNING",
-      "ssp_triggered": true
+      "token_text": " first",
+      "logit_confidence": 0.7222,
+      "psc_score": 0.1407,
+      "status": "SAFE",
+      "ssp_triggered": false
     },
     {
       "position": 5,
-      "token_text": " was",
-      "logit_confidence": 0.92,
-      "psc_score": 0.88,
-      "status": "HALT",
-      "ssp_triggered": true
+      "token_text": " president",
+      "logit_confidence": 0.4963,
+      "psc_score": 0.2536,
+      "status": "SAFE",
+      "ssp_triggered": false
+    },
+    {
+      "position": 6,
+      "token_text": " of",
+      "logit_confidence": 0.9226,
+      "psc_score": 0.0411,
+      "status": "SAFE",
+      "ssp_triggered": false
+    },
+    {
+      "position": 7,
+      "token_text": " Mars",
+      "logit_confidence": 0.7985,
+      "psc_score": 0.1028,
+      "status": "SAFE",
+      "ssp_triggered": false
+    },
+    {
+      "position": 8,
+      "token_text": " in",
+      "logit_confidence": 0.8632,
+      "psc_score": 0.0726,
+      "status": "SAFE",
+      "ssp_triggered": false
+    },
+    {
+      "position": 9,
+      "token_text": " ",
+      "logit_confidence": 0.9839,
+      "psc_score": 0.0103,
+      "status": "SAFE",
+      "ssp_triggered": false
     }
   ],
   "generation_metadata": {
@@ -59,7 +91,7 @@
       13,
       14
     ],
-    "commit_hash": "mock-commit-hash-gemma2b",
-    "session_timestamp": "2026-08-09T10:29:51.541105+00:00"
+    "commit_hash": "c5ebcd40d208330abc697524c919956e692655cf",
+    "session_timestamp": "2026-08-09T17:06:55.228977+00:00"
   }
 }

@@ -137,16 +137,23 @@ def load_hf_fallback_model(model_name: str, quantization: str = "int8", target_l
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     
     if quantization == "int8":
+        from transformers import BitsAndBytesConfig
+        quant_config = BitsAndBytesConfig(
+            load_in_8bit=True,
+            llm_int8_enable_fp32_cpu_offload=True
+        )
+        target_device = "cuda:0" if torch.cuda.is_available() else "auto"
         model = AutoModelForCausalLM.from_pretrained(
             model_name,
-            load_in_8bit=True,
-            device_map="auto"
+            quantization_config=quant_config,
+            device_map=target_device
         )
     else:
+        target_device = "cuda:0" if torch.cuda.is_available() else "auto"
         model = AutoModelForCausalLM.from_pretrained(
             model_name,
             torch_dtype=torch.float16,
-            device_map="auto"
+            device_map=target_device
         )
         
     model.eval()

@@ -40,13 +40,24 @@ def load_sae_model(
     try:
         from sae_lens import SAE
         logger.info(f"Loading pretrained SAE via sae_lens: release={sae_release}, sae_id={sae_id}...")
-        sae, cfg_dict, sparsity = SAE.from_pretrained(
+        res = SAE.from_pretrained(
             release=sae_release,
             sae_id=sae_id,
             device=device
         )
+        if isinstance(res, tuple):
+            sae = res[0]
+            cfg_dict = res[1] if len(res) > 1 else {}
+        else:
+            sae = res
+            cfg_dict = getattr(sae, "cfg", {})
+            if hasattr(cfg_dict, "to_dict"):
+                cfg_dict = cfg_dict.to_dict()
+            elif not isinstance(cfg_dict, dict):
+                cfg_dict = {"release": sae_release, "sae_id": sae_id}
+                
         sae.eval()
-        logger.info(f"SAE loaded successfully. cfg_dict keys: {list(cfg_dict.keys())}")
+        logger.info(f"SAE loaded successfully. Backend: sae_lens ({type(sae).__name__})")
         return {
             "release": sae_release,
             "sae_id": sae_id,

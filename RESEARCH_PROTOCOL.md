@@ -77,11 +77,9 @@ treat this as a stretch goal, not a requirement.
 ## Metric Definition
 
 - **Sparsity/density metric:** defined explicitly in `gpu_session/sae_project.py` 
-  as [e.g., L0 norm of active SAE latent dimensions above a fixed 
-  activation threshold, or normalized entropy over the latent activation 
-  vector] — pick one definition and use it identically across Part A and 
-  Part B without silent redefinition. Document the exact formula in this 
-  file's docstring and reference it here once finalized.
+  as the fraction of dormant SAE latent features: 
+  $$\text{sae\_sparsity\_metric} = 1.0 - \left( \frac{\text{L0\_norm}}{d_{\text{sae}}} \right)$$
+  where $\text{L0\_norm}$ is the count of active features above activation threshold $\epsilon = 10^{-5}$, and $d_{\text{sae}}$ is total SAE latent dimension. This metric is used identically across Part A and Part B without redefinition.
 - This metric is computed **during the GPU session**, immediately after 
   the SAE forward pass, and written directly to `part_a_raw.csv` — the raw 
   high-dimensional SAE latent vectors themselves are not saved by default 
