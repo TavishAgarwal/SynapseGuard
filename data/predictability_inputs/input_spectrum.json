@@ -1,0 +1,1602 @@
+[
+  {
+    "id": "constrained_factual_001",
+    "category": "constrained_factual",
+    "prompt": "The capital of France is",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 1
+  },
+  {
+    "id": "constrained_factual_002",
+    "category": "constrained_factual",
+    "prompt": "The official language of Japan is",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 2
+  },
+  {
+    "id": "constrained_factual_003",
+    "category": "constrained_factual",
+    "prompt": "Water freezes at a temperature of 0 degrees",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 3
+  },
+  {
+    "id": "constrained_factual_004",
+    "category": "constrained_factual",
+    "prompt": "The chemical symbol for Gold is",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 4
+  },
+  {
+    "id": "constrained_factual_005",
+    "category": "constrained_factual",
+    "prompt": "The planet closest to the Sun is",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 5
+  },
+  {
+    "id": "constrained_factual_006",
+    "category": "constrained_factual",
+    "prompt": "The boiling point of water at sea level in Celsius is",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 6
+  },
+  {
+    "id": "constrained_factual_007",
+    "category": "constrained_factual",
+    "prompt": "The author of 'Romeo and Juliet' is William",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 7
+  },
+  {
+    "id": "constrained_factual_008",
+    "category": "constrained_factual",
+    "prompt": "The primary currency used in the United Kingdom is the",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 8
+  },
+  {
+    "id": "constrained_factual_009",
+    "category": "constrained_factual",
+    "prompt": "The largest ocean on Earth is the",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 9
+  },
+  {
+    "id": "constrained_factual_010",
+    "category": "constrained_factual",
+    "prompt": "The square root of 64 is",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 10
+  },
+  {
+    "id": "constrained_factual_011",
+    "category": "constrained_factual",
+    "prompt": "The freezing point of water in Fahrenheit is",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 11
+  },
+  {
+    "id": "constrained_factual_012",
+    "category": "constrained_factual",
+    "prompt": "The currency of Japan is the",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 12
+  },
+  {
+    "id": "constrained_factual_013",
+    "category": "constrained_factual",
+    "prompt": "The capital city of Italy is",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 13
+  },
+  {
+    "id": "constrained_factual_014",
+    "category": "constrained_factual",
+    "prompt": "The color of a clear daytime sky is",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 14
+  },
+  {
+    "id": "constrained_factual_015",
+    "category": "constrained_factual",
+    "prompt": "The symbol for oxygen on the periodic table is",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 15
+  },
+  {
+    "id": "constrained_factual_016",
+    "category": "constrained_factual",
+    "prompt": "The chemical formula for pure water is",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 16
+  },
+  {
+    "id": "constrained_factual_017",
+    "category": "constrained_factual",
+    "prompt": "The number of states in the United States is",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 17
+  },
+  {
+    "id": "constrained_factual_018",
+    "category": "constrained_factual",
+    "prompt": "The speed of light in a vacuum is approximately 300,000 kilometers per",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 18
+  },
+  {
+    "id": "constrained_factual_019",
+    "category": "constrained_factual",
+    "prompt": "The capital of Spain is",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 19
+  },
+  {
+    "id": "constrained_factual_020",
+    "category": "constrained_factual",
+    "prompt": "The second element on the periodic table is",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 20
+  },
+  {
+    "id": "constrained_factual_021",
+    "category": "constrained_factual",
+    "prompt": "The organ responsible for pumping blood through the human body is the",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 21
+  },
+  {
+    "id": "constrained_factual_022",
+    "category": "constrained_factual",
+    "prompt": "The continent containing the Sahara Desert is",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 22
+  },
+  {
+    "id": "constrained_factual_023",
+    "category": "constrained_factual",
+    "prompt": "The hard white structure that forms the skeleton of vertebrate animals is the",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 23
+  },
+  {
+    "id": "constrained_factual_024",
+    "category": "constrained_factual",
+    "prompt": "The capital of Germany is",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 24
+  },
+  {
+    "id": "constrained_factual_025",
+    "category": "constrained_factual",
+    "prompt": "The primary gas that humans breathe in to survive is",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 25
+  },
+  {
+    "id": "constrained_factual_026",
+    "category": "constrained_factual",
+    "prompt": "The largest planet in our solar system is",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 26
+  },
+  {
+    "id": "constrained_factual_027",
+    "category": "constrained_factual",
+    "prompt": "The natural satellite orbiting the Earth is the",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 27
+  },
+  {
+    "id": "constrained_factual_028",
+    "category": "constrained_factual",
+    "prompt": "The capital of Canada is",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 28
+  },
+  {
+    "id": "constrained_factual_029",
+    "category": "constrained_factual",
+    "prompt": "The process by which plants turn sunlight into energy is called",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 29
+  },
+  {
+    "id": "constrained_factual_030",
+    "category": "constrained_factual",
+    "prompt": "The instrument used to measure temperature is a",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 30
+  },
+  {
+    "id": "constrained_factual_031",
+    "category": "constrained_factual",
+    "prompt": "The capital of Australia is",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 31
+  },
+  {
+    "id": "constrained_factual_032",
+    "category": "constrained_factual",
+    "prompt": "The study of living organisms is known as",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 32
+  },
+  {
+    "id": "constrained_factual_033",
+    "category": "constrained_factual",
+    "prompt": "The primary language spoken in Brazil is",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 33
+  },
+  {
+    "id": "constrained_factual_034",
+    "category": "constrained_factual",
+    "prompt": "The element represented by the letter 'N' on the periodic table is",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 34
+  },
+  {
+    "id": "constrained_factual_035",
+    "category": "constrained_factual",
+    "prompt": "The continent located at the Earth's southernmost pole is",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 35
+  },
+  {
+    "id": "constrained_factual_036",
+    "category": "constrained_factual",
+    "prompt": "The capital of China is",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 36
+  },
+  {
+    "id": "constrained_factual_037",
+    "category": "constrained_factual",
+    "prompt": "The force that pulls objects toward the center of the Earth is",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 37
+  },
+  {
+    "id": "constrained_factual_038",
+    "category": "constrained_factual",
+    "prompt": "The capital of Russia is",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 38
+  },
+  {
+    "id": "constrained_factual_039",
+    "category": "constrained_factual",
+    "prompt": "The author of 'Pride and Prejudice' is Jane",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 39
+  },
+  {
+    "id": "constrained_factual_040",
+    "category": "constrained_factual",
+    "prompt": "The capital of Egypt is",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 40
+  },
+  {
+    "id": "constrained_factual_041",
+    "category": "constrained_factual",
+    "prompt": "The atomic number of Carbon is",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 41
+  },
+  {
+    "id": "constrained_factual_042",
+    "category": "constrained_factual",
+    "prompt": "The primary metal in stainless steel is",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 42
+  },
+  {
+    "id": "constrained_factual_043",
+    "category": "constrained_factual",
+    "prompt": "The capital of Brazil is",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 43
+  },
+  {
+    "id": "constrained_factual_044",
+    "category": "constrained_factual",
+    "prompt": "The three main states of matter are solid, liquid, and",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 44
+  },
+  {
+    "id": "constrained_factual_045",
+    "category": "constrained_factual",
+    "prompt": "The capital of India is",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 45
+  },
+  {
+    "id": "constrained_factual_046",
+    "category": "constrained_factual",
+    "prompt": "The gas that makes up the majority of Earth's atmosphere is",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 46
+  },
+  {
+    "id": "constrained_factual_047",
+    "category": "constrained_factual",
+    "prompt": "The unit of electric current is the",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 47
+  },
+  {
+    "id": "constrained_factual_048",
+    "category": "constrained_factual",
+    "prompt": "The capital of Mexico is",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 48
+  },
+  {
+    "id": "constrained_factual_049",
+    "category": "constrained_factual",
+    "prompt": "The process of liquid water turning into gas is called",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 49
+  },
+  {
+    "id": "constrained_factual_050",
+    "category": "constrained_factual",
+    "prompt": "The capital of Argentina is",
+    "expected_predictability": "high",
+    "notes": "Factually constrained completion",
+    "global_index": 50
+  },
+  {
+    "id": "moderate_reasoning_001",
+    "category": "moderate_reasoning",
+    "prompt": "If Sarah has 5 apples and gives 2 to her friend, she has",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 51
+  },
+  {
+    "id": "moderate_reasoning_002",
+    "category": "moderate_reasoning",
+    "prompt": "To convert kilometers to meters, you multiply the value by",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 52
+  },
+  {
+    "id": "moderate_reasoning_003",
+    "category": "moderate_reasoning",
+    "prompt": "If a train leaves at 3:00 PM and arrives at 5:30 PM, the trip duration is",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 53
+  },
+  {
+    "id": "moderate_reasoning_004",
+    "category": "moderate_reasoning",
+    "prompt": "The day immediately following Tuesday is",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 54
+  },
+  {
+    "id": "moderate_reasoning_005",
+    "category": "moderate_reasoning",
+    "prompt": "If a rectangle has length 4 cm and width 3 cm, its area is",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 55
+  },
+  {
+    "id": "moderate_reasoning_006",
+    "category": "moderate_reasoning",
+    "prompt": "If you double the number 15, you get",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 56
+  },
+  {
+    "id": "moderate_reasoning_007",
+    "category": "moderate_reasoning",
+    "prompt": "The result of dividing 100 by 4 is",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 57
+  },
+  {
+    "id": "moderate_reasoning_008",
+    "category": "moderate_reasoning",
+    "prompt": "If a coat costs $80 and is discounted by 50%, the final price is",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 58
+  },
+  {
+    "id": "moderate_reasoning_009",
+    "category": "moderate_reasoning",
+    "prompt": "The perimeter of a square with side length 5 meters is",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 59
+  },
+  {
+    "id": "moderate_reasoning_010",
+    "category": "moderate_reasoning",
+    "prompt": "If today is Thursday, the day after tomorrow will be",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 60
+  },
+  {
+    "id": "moderate_reasoning_011",
+    "category": "moderate_reasoning",
+    "prompt": "A triangle with three equal sides is called an",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 61
+  },
+  {
+    "id": "moderate_reasoning_012",
+    "category": "moderate_reasoning",
+    "prompt": "If you add 45 and 35 together, the total is",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 62
+  },
+  {
+    "id": "moderate_reasoning_013",
+    "category": "moderate_reasoning",
+    "prompt": "The number of hours in two full days is",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 63
+  },
+  {
+    "id": "moderate_reasoning_014",
+    "category": "moderate_reasoning",
+    "prompt": "If an item costs $20 and sales tax is 10%, the total cost is",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 64
+  },
+  {
+    "id": "moderate_reasoning_015",
+    "category": "moderate_reasoning",
+    "prompt": "The average of the numbers 10, 20, and 30 is",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 65
+  },
+  {
+    "id": "moderate_reasoning_016",
+    "category": "moderate_reasoning",
+    "prompt": "If a car travels at 60 mph for 2 hours, the total distance traveled is",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 66
+  },
+  {
+    "id": "moderate_reasoning_017",
+    "category": "moderate_reasoning",
+    "prompt": "The fraction 1/2 expressed as a percentage is",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 67
+  },
+  {
+    "id": "moderate_reasoning_018",
+    "category": "moderate_reasoning",
+    "prompt": "If a polygon has five sides, it is called a",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 68
+  },
+  {
+    "id": "moderate_reasoning_019",
+    "category": "moderate_reasoning",
+    "prompt": "If you subtract 18 from 50, the result is",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 69
+  },
+  {
+    "id": "moderate_reasoning_020",
+    "category": "moderate_reasoning",
+    "prompt": "The number of months in a quarter of a year is",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 70
+  },
+  {
+    "id": "moderate_reasoning_021",
+    "category": "moderate_reasoning",
+    "prompt": "If 3x = 12, then x equals",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 71
+  },
+  {
+    "id": "moderate_reasoning_022",
+    "category": "moderate_reasoning",
+    "prompt": "A century consists of how many years?",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 72
+  },
+  {
+    "id": "moderate_reasoning_023",
+    "category": "moderate_reasoning",
+    "prompt": "If you mix blue and yellow paint together, you get",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 73
+  },
+  {
+    "id": "moderate_reasoning_024",
+    "category": "moderate_reasoning",
+    "prompt": "The number of degrees in a right angle is",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 74
+  },
+  {
+    "id": "moderate_reasoning_025",
+    "category": "moderate_reasoning",
+    "prompt": "If a clock shows 15:00, in 12-hour time it is",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 75
+  },
+  {
+    "id": "moderate_reasoning_026",
+    "category": "moderate_reasoning",
+    "prompt": "If you multiply 7 by 8, the product is",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 76
+  },
+  {
+    "id": "moderate_reasoning_027",
+    "category": "moderate_reasoning",
+    "prompt": "The sum of angles in a flat triangle is",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 77
+  },
+  {
+    "id": "moderate_reasoning_028",
+    "category": "moderate_reasoning",
+    "prompt": "If a book has 200 pages and you read 50 pages a day, it takes",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 78
+  },
+  {
+    "id": "moderate_reasoning_029",
+    "category": "moderate_reasoning",
+    "prompt": "The Roman numeral 'X' represents the number",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 79
+  },
+  {
+    "id": "moderate_reasoning_030",
+    "category": "moderate_reasoning",
+    "prompt": "If you cut an apple into 4 equal slices and eat 3, the remaining fraction is",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 80
+  },
+  {
+    "id": "moderate_reasoning_031",
+    "category": "moderate_reasoning",
+    "prompt": "If a marathon is approximately 26 miles, half a marathon is",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 81
+  },
+  {
+    "id": "moderate_reasoning_032",
+    "category": "moderate_reasoning",
+    "prompt": "The prime number immediately following 5 is",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 82
+  },
+  {
+    "id": "moderate_reasoning_033",
+    "category": "moderate_reasoning",
+    "prompt": "If a container holds 2 liters, how many milliliters does it hold?",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 83
+  },
+  {
+    "id": "moderate_reasoning_034",
+    "category": "moderate_reasoning",
+    "prompt": "If 10 minus x equals 4, then x is equal to",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 84
+  },
+  {
+    "id": "moderate_reasoning_035",
+    "category": "moderate_reasoning",
+    "prompt": "The next number in the sequence 2, 4, 6, 8 is",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 85
+  },
+  {
+    "id": "moderate_reasoning_036",
+    "category": "moderate_reasoning",
+    "prompt": "If a recipe calls for 2 cups of flour for 1 batch, 3 batches require",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 86
+  },
+  {
+    "id": "moderate_reasoning_037",
+    "category": "moderate_reasoning",
+    "prompt": "The number of sides on a standard stop sign is",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 87
+  },
+  {
+    "id": "moderate_reasoning_038",
+    "category": "moderate_reasoning",
+    "prompt": "If you deposit $100 and earn $5 interest, your balance is",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 88
+  },
+  {
+    "id": "moderate_reasoning_039",
+    "category": "moderate_reasoning",
+    "prompt": "The smallest positive two-digit number is",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 89
+  },
+  {
+    "id": "moderate_reasoning_040",
+    "category": "moderate_reasoning",
+    "prompt": "If a person was born in 2000, in 2026 their age is",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 90
+  },
+  {
+    "id": "moderate_reasoning_041",
+    "category": "moderate_reasoning",
+    "prompt": "The perimeter of a rectangle with length 10 and width 5 is",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 91
+  },
+  {
+    "id": "moderate_reasoning_042",
+    "category": "moderate_reasoning",
+    "prompt": "If you flip a fair coin, the probability of landing heads is",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 92
+  },
+  {
+    "id": "moderate_reasoning_043",
+    "category": "moderate_reasoning",
+    "prompt": "The next number in the sequence 5, 10, 15, 20 is",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 93
+  },
+  {
+    "id": "moderate_reasoning_044",
+    "category": "moderate_reasoning",
+    "prompt": "If a clock face is divided into 12 equal sections, each section represents",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 94
+  },
+  {
+    "id": "moderate_reasoning_045",
+    "category": "moderate_reasoning",
+    "prompt": "The product of 9 and 9 is",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 95
+  },
+  {
+    "id": "moderate_reasoning_046",
+    "category": "moderate_reasoning",
+    "prompt": "If 15 students out of 30 pass an exam, the pass percentage is",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 96
+  },
+  {
+    "id": "moderate_reasoning_047",
+    "category": "moderate_reasoning",
+    "prompt": "The square of 5 is equal to",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 97
+  },
+  {
+    "id": "moderate_reasoning_048",
+    "category": "moderate_reasoning",
+    "prompt": "If a cube has side length 2 cm, its volume in cubic cm is",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 98
+  },
+  {
+    "id": "moderate_reasoning_049",
+    "category": "moderate_reasoning",
+    "prompt": "The month that comes right before October is",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 99
+  },
+  {
+    "id": "moderate_reasoning_050",
+    "category": "moderate_reasoning",
+    "prompt": "If a dozen eggs costs $3, then two dozen eggs cost",
+    "expected_predictability": "moderate",
+    "notes": "Reasoning & arithmetic prompt",
+    "global_index": 100
+  },
+  {
+    "id": "open_ended_001",
+    "category": "open_ended",
+    "prompt": "Write a poetic metaphor about the passage of time:",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 101
+  },
+  {
+    "id": "open_ended_002",
+    "category": "open_ended",
+    "prompt": "Describe the feeling of standing on a mountain peak at sunrise:",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 102
+  },
+  {
+    "id": "open_ended_003",
+    "category": "open_ended",
+    "prompt": "In a world where dreams can be recorded and shared, a young painter",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 103
+  },
+  {
+    "id": "open_ended_004",
+    "category": "open_ended",
+    "prompt": "Reflect on what makes a human friendship truly meaningful:",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 104
+  },
+  {
+    "id": "open_ended_005",
+    "category": "open_ended",
+    "prompt": "The gentle hum of the old clock shop reminded him of",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 105
+  },
+  {
+    "id": "open_ended_006",
+    "category": "open_ended",
+    "prompt": "Consider how technology might shape artistic expression over the next century:",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 106
+  },
+  {
+    "id": "open_ended_007",
+    "category": "open_ended",
+    "prompt": "An old fisherman sat by the harbor and whispered to the tide,",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 107
+  },
+  {
+    "id": "open_ended_008",
+    "category": "open_ended",
+    "prompt": "The morning mist over the quiet valley felt like",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 108
+  },
+  {
+    "id": "open_ended_009",
+    "category": "open_ended",
+    "prompt": "If music had a physical scent, it would smell like",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 109
+  },
+  {
+    "id": "open_ended_010",
+    "category": "open_ended",
+    "prompt": "Discuss the philosophical idea of balance in nature:",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 110
+  },
+  {
+    "id": "open_ended_011",
+    "category": "open_ended",
+    "prompt": "A lone traveler found a glowing door in the middle of an ancient forest and",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 111
+  },
+  {
+    "id": "open_ended_012",
+    "category": "open_ended",
+    "prompt": "Describe the taste of a memory you cherish from childhood:",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 112
+  },
+  {
+    "id": "open_ended_013",
+    "category": "open_ended",
+    "prompt": "The rain fell softly against the windowpane as she opened the letter and read",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 113
+  },
+  {
+    "id": "open_ended_014",
+    "category": "open_ended",
+    "prompt": "What does freedom mean to someone who spent years in quiet isolation?",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 114
+  },
+  {
+    "id": "open_ended_015",
+    "category": "open_ended",
+    "prompt": "An forgotten melody began playing from the attic, prompting them to",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 115
+  },
+  {
+    "id": "open_ended_016",
+    "category": "open_ended",
+    "prompt": "Explore the relationship between human curiosity and scientific discovery:",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 116
+  },
+  {
+    "id": "open_ended_017",
+    "category": "open_ended",
+    "prompt": "The neon lights reflected off the wet city pavement, creating",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 117
+  },
+  {
+    "id": "open_ended_018",
+    "category": "open_ended",
+    "prompt": "Write a short opening line for a fantasy novel set in an underwater kingdom:",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 118
+  },
+  {
+    "id": "open_ended_019",
+    "category": "open_ended",
+    "prompt": "She picked up the vintage camera and noticed a photo that showed",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 119
+  },
+  {
+    "id": "open_ended_020",
+    "category": "open_ended",
+    "prompt": "Reflect on the quiet beauty of an autumn forest in late November:",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 120
+  },
+  {
+    "id": "open_ended_021",
+    "category": "open_ended",
+    "prompt": "The stranger smiled warmly and offered a piece of advice that changed everything:",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 121
+  },
+  {
+    "id": "open_ended_022",
+    "category": "open_ended",
+    "prompt": "Imagine discovering a library where books write themselves in real time:",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 122
+  },
+  {
+    "id": "open_ended_023",
+    "category": "open_ended",
+    "prompt": "Discuss how silence can sometimes communicate more than words:",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 123
+  },
+  {
+    "id": "open_ended_024",
+    "category": "open_ended",
+    "prompt": "The wind carried the faint scent of pine and ocean salt as",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 124
+  },
+  {
+    "id": "open_ended_025",
+    "category": "open_ended",
+    "prompt": "Write a reflective sentence about the vastness of the night sky:",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 125
+  },
+  {
+    "id": "open_ended_026",
+    "category": "open_ended",
+    "prompt": "In the heart of the abandoned garden, a single glowing flower",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 126
+  },
+  {
+    "id": "open_ended_027",
+    "category": "open_ended",
+    "prompt": "Describe the atmosphere of a bustling night market in a tropical city:",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 127
+  },
+  {
+    "id": "open_ended_028",
+    "category": "open_ended",
+    "prompt": "What role does nostalgia play in human storytelling?",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 128
+  },
+  {
+    "id": "open_ended_029",
+    "category": "open_ended",
+    "prompt": "He picked up the old wooden guitar and played a chord that sounded like",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 129
+  },
+  {
+    "id": "open_ended_030",
+    "category": "open_ended",
+    "prompt": "The silver moonlight filtered through the dense canopy of trees, illuminating",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 130
+  },
+  {
+    "id": "open_ended_031",
+    "category": "open_ended",
+    "prompt": "Reflect on the value of patience in a fast-paced world:",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 131
+  },
+  {
+    "id": "open_ended_032",
+    "category": "open_ended",
+    "prompt": "A scientist accidentally created a mirror that reflected the future instead of",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 132
+  },
+  {
+    "id": "open_ended_033",
+    "category": "open_ended",
+    "prompt": "Describe the sound of dry leaves rustling underfoot on a crisp October morning:",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 133
+  },
+  {
+    "id": "open_ended_034",
+    "category": "open_ended",
+    "prompt": "What does courage look like when nobody is watching?",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 134
+  },
+  {
+    "id": "open_ended_035",
+    "category": "open_ended",
+    "prompt": "The old map had a mark in gold ink leading to",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 135
+  },
+  {
+    "id": "open_ended_036",
+    "category": "open_ended",
+    "prompt": "Explore how architecture reflects the culture and values of a society:",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 136
+  },
+  {
+    "id": "open_ended_037",
+    "category": "open_ended",
+    "prompt": "The train glided through the snow-covered countryside as the passengers",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 137
+  },
+  {
+    "id": "open_ended_038",
+    "category": "open_ended",
+    "prompt": "Write a thoughtful thought about the importance of listening to others:",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 138
+  },
+  {
+    "id": "open_ended_039",
+    "category": "open_ended",
+    "prompt": "A sudden hush fell over the theater as the curtain rose to reveal",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 139
+  },
+  {
+    "id": "open_ended_040",
+    "category": "open_ended",
+    "prompt": "Reflect on how small acts of kindness ripple through a community:",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 140
+  },
+  {
+    "id": "open_ended_041",
+    "category": "open_ended",
+    "prompt": "The clock chimed midnight, but instead of silence, a soft melody",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 141
+  },
+  {
+    "id": "open_ended_042",
+    "category": "open_ended",
+    "prompt": "Imagine a world where emotions change the ambient color of the room:",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 142
+  },
+  {
+    "id": "open_ended_043",
+    "category": "open_ended",
+    "prompt": "Describe the sensation of diving into cool lake water on a hot summer day:",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 143
+  },
+  {
+    "id": "open_ended_044",
+    "category": "open_ended",
+    "prompt": "What lesson can we learn from the endurance of ancient oak trees?",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 144
+  },
+  {
+    "id": "open_ended_045",
+    "category": "open_ended",
+    "prompt": "She found a small metal key inside a hollow book and decided to",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 145
+  },
+  {
+    "id": "open_ended_046",
+    "category": "open_ended",
+    "prompt": "Discuss how art can heal emotional wounds:",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 146
+  },
+  {
+    "id": "open_ended_047",
+    "category": "open_ended",
+    "prompt": "The night was quiet except for the distant cry of a solitary owl as",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 147
+  },
+  {
+    "id": "open_ended_048",
+    "category": "open_ended",
+    "prompt": "Write a sentence describing the stillness of a mirror-like pond:",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 148
+  },
+  {
+    "id": "open_ended_049",
+    "category": "open_ended",
+    "prompt": "Reflect on the connection between memory and scent:",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 149
+  },
+  {
+    "id": "open_ended_050",
+    "category": "open_ended",
+    "prompt": "A mystery box arrived at the doorstep with no return address, containing",
+    "expected_predictability": "low",
+    "notes": "Open-ended creative prompt",
+    "global_index": 150
+  },
+  {
+    "id": "adversarial_ambiguous_001",
+    "category": "adversarial_ambiguous",
+    "prompt": "The president of Mars in the year 1984 was",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 151
+  },
+  {
+    "id": "adversarial_ambiguous_002",
+    "category": "adversarial_ambiguous",
+    "prompt": "When the heavy feather fell from the tower, the light boulder",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 152
+  },
+  {
+    "id": "adversarial_ambiguous_003",
+    "category": "adversarial_ambiguous",
+    "prompt": "The color of an invisible thought floating in water is",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 153
+  },
+  {
+    "id": "adversarial_ambiguous_004",
+    "category": "adversarial_ambiguous",
+    "prompt": "If a circle has four right angles, its total perimeter is",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 154
+  },
+  {
+    "id": "adversarial_ambiguous_005",
+    "category": "adversarial_ambiguous",
+    "prompt": "The square root of a blue ocean equals",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 155
+  },
+  {
+    "id": "adversarial_ambiguous_006",
+    "category": "adversarial_ambiguous",
+    "prompt": "When a silent noise screams softly, the echo sounds like",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 156
+  },
+  {
+    "id": "adversarial_ambiguous_007",
+    "category": "adversarial_ambiguous",
+    "prompt": "The official capital of the Moon is located at",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 157
+  },
+  {
+    "id": "adversarial_ambiguous_008",
+    "category": "adversarial_ambiguous",
+    "prompt": "If Tuesday is red and Thursday is sweet, then Wednesday tastes like",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 158
+  },
+  {
+    "id": "adversarial_ambiguous_009",
+    "category": "adversarial_ambiguous",
+    "prompt": "The temperature of liquid sunlight at midnight is",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 159
+  },
+  {
+    "id": "adversarial_ambiguous_010",
+    "category": "adversarial_ambiguous",
+    "prompt": "When the sun rose in the west yesterday morning, the shadows pointed",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 160
+  },
+  {
+    "id": "adversarial_ambiguous_011",
+    "category": "adversarial_ambiguous",
+    "prompt": "The chemical formula for solid electricity is",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 161
+  },
+  {
+    "id": "adversarial_ambiguous_012",
+    "category": "adversarial_ambiguous",
+    "prompt": "If all cats are dogs and all dogs are fish, then a cat can fly because",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 162
+  },
+  {
+    "id": "adversarial_ambiguous_013",
+    "category": "adversarial_ambiguous",
+    "prompt": "The weight of a kilogram of feathers compared to a kilogram of lead is lighter because",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 163
+  },
+  {
+    "id": "adversarial_ambiguous_014",
+    "category": "adversarial_ambiguous",
+    "prompt": "The distance between yesterday and tomorrow is measured in",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 164
+  },
+  {
+    "id": "adversarial_ambiguous_015",
+    "category": "adversarial_ambiguous",
+    "prompt": "When water dries up, the wetness retreats into the",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 165
+  },
+  {
+    "id": "adversarial_ambiguous_016",
+    "category": "adversarial_ambiguous",
+    "prompt": "The speed of an wooden lightning bolt traveling through glass is",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 166
+  },
+  {
+    "id": "adversarial_ambiguous_017",
+    "category": "adversarial_ambiguous",
+    "prompt": "If 2 + 2 equals 5 in base 10 arithmetic, then 3 + 3 equals",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 167
+  },
+  {
+    "id": "adversarial_ambiguous_018",
+    "category": "adversarial_ambiguous",
+    "prompt": "The name of the fifth corner on a perfect circle is",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 168
+  },
+  {
+    "id": "adversarial_ambiguous_019",
+    "category": "adversarial_ambiguous",
+    "prompt": "When you turn off the light, the darkness turns on its own",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 169
+  },
+  {
+    "id": "adversarial_ambiguous_020",
+    "category": "adversarial_ambiguous",
+    "prompt": "The sound of a single hand clapping in an empty vacuum is",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 170
+  },
+  {
+    "id": "adversarial_ambiguous_021",
+    "category": "adversarial_ambiguous",
+    "prompt": "If a train travels backwards in time, it arrives before it",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 171
+  },
+  {
+    "id": "adversarial_ambiguous_022",
+    "category": "adversarial_ambiguous",
+    "prompt": "The melting point of a wooden knife is",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 172
+  },
+  {
+    "id": "adversarial_ambiguous_023",
+    "category": "adversarial_ambiguous",
+    "prompt": "When an unmovable object collides with a non-existent wall,",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 173
+  },
+  {
+    "id": "adversarial_ambiguous_024",
+    "category": "adversarial_ambiguous",
+    "prompt": "The currency used by fish in the Atlantic ocean is",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 174
+  },
+  {
+    "id": "adversarial_ambiguous_025",
+    "category": "adversarial_ambiguous",
+    "prompt": "The flavor of a transparent triangle is",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 175
+  },
+  {
+    "id": "adversarial_ambiguous_026",
+    "category": "adversarial_ambiguous",
+    "prompt": "If yesterday was tomorrow, then today must be",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 176
+  },
+  {
+    "id": "adversarial_ambiguous_027",
+    "category": "adversarial_ambiguous",
+    "prompt": "The thickness of a flat line drawn without ink is",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 177
+  },
+  {
+    "id": "adversarial_ambiguous_028",
+    "category": "adversarial_ambiguous",
+    "prompt": "When a blind eye sees a dark shadow in total blackness, it perceives",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 178
+  },
+  {
+    "id": "adversarial_ambiguous_029",
+    "category": "adversarial_ambiguous",
+    "prompt": "The height of a hole dug into the ground is",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 179
+  },
+  {
+    "id": "adversarial_ambiguous_030",
+    "category": "adversarial_ambiguous",
+    "prompt": "If up is down and left is right, then moving forward means going",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 180
+  },
+  {
+    "id": "adversarial_ambiguous_031",
+    "category": "adversarial_ambiguous",
+    "prompt": "The density of a vacuum filled with absolute nothingness weighs",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 181
+  },
+  {
+    "id": "adversarial_ambiguous_032",
+    "category": "adversarial_ambiguous",
+    "prompt": "When a cold flame burns ice into steam, the ashes smell like",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 182
+  },
+  {
+    "id": "adversarial_ambiguous_033",
+    "category": "adversarial_ambiguous",
+    "prompt": "The population of human beings living on the surface of Jupiter is",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 183
+  },
+  {
+    "id": "adversarial_ambiguous_034",
+    "category": "adversarial_ambiguous",
+    "prompt": "If a secret is told to nobody, the person who heard it was",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 184
+  },
+  {
+    "id": "adversarial_ambiguous_035",
+    "category": "adversarial_ambiguous",
+    "prompt": "The taste of a sharp turn on a straight road is",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 185
+  },
+  {
+    "id": "adversarial_ambiguous_036",
+    "category": "adversarial_ambiguous",
+    "prompt": "When the dry rain soaked the desert, the dust turned into liquid",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 186
+  },
+  {
+    "id": "adversarial_ambiguous_037",
+    "category": "adversarial_ambiguous",
+    "prompt": "The age of a newborn thousand-year-old oak tree is",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 187
+  },
+  {
+    "id": "adversarial_ambiguous_038",
+    "category": "adversarial_ambiguous",
+    "prompt": "If a square has three sides, the length of the fourth side is",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 188
+  },
+  {
+    "id": "adversarial_ambiguous_039",
+    "category": "adversarial_ambiguous",
+    "prompt": "The speed limit for light traveling backwards through a mirror is",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 189
+  },
+  {
+    "id": "adversarial_ambiguous_040",
+    "category": "adversarial_ambiguous",
+    "prompt": "When silence becomes loud enough to shatter glass, the frequency is",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 190
+  },
+  {
+    "id": "adversarial_ambiguous_041",
+    "category": "adversarial_ambiguous",
+    "prompt": "The deep red color of pure air in a sealed room is",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 191
+  },
+  {
+    "id": "adversarial_ambiguous_042",
+    "category": "adversarial_ambiguous",
+    "prompt": "If a book is written in a language that doesn't exist, the words mean",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 192
+  },
+  {
+    "id": "adversarial_ambiguous_043",
+    "category": "adversarial_ambiguous",
+    "prompt": "The shadow cast by a flame under direct sunlight is",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 193
+  },
+  {
+    "id": "adversarial_ambiguous_044",
+    "category": "adversarial_ambiguous",
+    "prompt": "When a clock ticks backwards from zero, the time displayed is",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 194
+  },
+  {
+    "id": "adversarial_ambiguous_045",
+    "category": "adversarial_ambiguous",
+    "prompt": "The weight of a shadow standing in the sun is",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 195
+  },
+  {
+    "id": "adversarial_ambiguous_046",
+    "category": "adversarial_ambiguous",
+    "prompt": "If 1 equals 0, then multiplying any number by 1 gives",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 196
+  },
+  {
+    "id": "adversarial_ambiguous_047",
+    "category": "adversarial_ambiguous",
+    "prompt": "The temperature of absolute zero in degrees of warmth is",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 197
+  },
+  {
+    "id": "adversarial_ambiguous_048",
+    "category": "adversarial_ambiguous",
+    "prompt": "When a quiet storm brings dry floods, the river flows with",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 198
+  },
+  {
+    "id": "adversarial_ambiguous_049",
+    "category": "adversarial_ambiguous",
+    "prompt": "The shape of a spherical cube made of liquid iron is",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 199
+  },
+  {
+    "id": "adversarial_ambiguous_050",
+    "category": "adversarial_ambiguous",
+    "prompt": "If you open a door that leads nowhere, the room inside is",
+    "expected_predictability": "uncertain",
+    "notes": "Adversarial/ambiguous prompt",
+    "global_index": 200
+  }
+]

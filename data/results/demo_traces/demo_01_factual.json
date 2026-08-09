@@ -1,0 +1,73 @@
+{
+  "prompt": "What is the capital of France?",
+  "model": "google/gemma-2-2b",
+  "tokens": [
+    {
+      "position": 0,
+      "token_text": "The",
+      "logit_confidence": 0.99,
+      "psc_score": 0.05,
+      "status": "SAFE",
+      "ssp_triggered": false
+    },
+    {
+      "position": 1,
+      "token_text": " capital",
+      "logit_confidence": 0.98,
+      "psc_score": 0.08,
+      "status": "SAFE",
+      "ssp_triggered": false
+    },
+    {
+      "position": 2,
+      "token_text": " of",
+      "logit_confidence": 0.99,
+      "psc_score": 0.06,
+      "status": "SAFE",
+      "ssp_triggered": false
+    },
+    {
+      "position": 3,
+      "token_text": " France",
+      "logit_confidence": 0.99,
+      "psc_score": 0.04,
+      "status": "SAFE",
+      "ssp_triggered": false
+    },
+    {
+      "position": 4,
+      "token_text": " is",
+      "logit_confidence": 0.99,
+      "psc_score": 0.05,
+      "status": "SAFE",
+      "ssp_triggered": false
+    },
+    {
+      "position": 5,
+      "token_text": " Paris",
+      "logit_confidence": 0.99,
+      "psc_score": 0.03,
+      "status": "SAFE",
+      "ssp_triggered": false
+    },
+    {
+      "position": 6,
+      "token_text": ".",
+      "logit_confidence": 0.99,
+      "psc_score": 0.02,
+      "status": "SAFE",
+      "ssp_triggered": false
+    }
+  ],
+  "generation_metadata": {
+    "quantization": "int8",
+    "layers_used": [
+      11,
+      12,
+      13,
+      14
+    ],
+    "commit_hash": "mock-commit-hash-gemma2b",
+    "session_timestamp": "2026-08-09T10:29:51.541105+00:00"
+  }
+}

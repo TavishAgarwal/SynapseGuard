@@ -1,0 +1,65 @@
+{
+  "prompt": "Who was the first president of Mars in 1984?",
+  "model": "google/gemma-2-2b",
+  "tokens": [
+    {
+      "position": 0,
+      "token_text": "The",
+      "logit_confidence": 0.95,
+      "psc_score": 0.12,
+      "status": "SAFE",
+      "ssp_triggered": false
+    },
+    {
+      "position": 1,
+      "token_text": " first",
+      "logit_confidence": 0.91,
+      "psc_score": 0.25,
+      "status": "SAFE",
+      "ssp_triggered": false
+    },
+    {
+      "position": 2,
+      "token_text": " president",
+      "logit_confidence": 0.88,
+      "psc_score": 0.45,
+      "status": "SAFE",
+      "ssp_triggered": false
+    },
+    {
+      "position": 3,
+      "token_text": " of",
+      "logit_confidence": 0.89,
+      "psc_score": 0.58,
+      "status": "SAFE",
+      "ssp_triggered": false
+    },
+    {
+      "position": 4,
+      "token_text": " Mars",
+      "logit_confidence": 0.94,
+      "psc_score": 0.78,
+      "status": "WARNING",
+      "ssp_triggered": true
+    },
+    {
+      "position": 5,
+      "token_text": " was",
+      "logit_confidence": 0.92,
+      "psc_score": 0.88,
+      "status": "HALT",
+      "ssp_triggered": true
+    }
+  ],
+  "generation_metadata": {
+    "quantization": "int8",
+    "layers_used": [
+      11,
+      12,
+      13,
+      14
+    ],
+    "commit_hash": "mock-commit-hash-gemma2b",
+    "session_timestamp": "2026-08-09T10:29:51.541105+00:00"
+  }
+}

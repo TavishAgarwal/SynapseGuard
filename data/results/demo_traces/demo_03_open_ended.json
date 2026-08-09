@@ -1,0 +1,49 @@
+{
+  "prompt": "Write a short poetic phrase about quantum computing.",
+  "model": "google/gemma-2-2b",
+  "tokens": [
+    {
+      "position": 0,
+      "token_text": "Superposition",
+      "logit_confidence": 0.7,
+      "psc_score": 0.2,
+      "status": "SAFE",
+      "ssp_triggered": false
+    },
+    {
+      "position": 1,
+      "token_text": " dances",
+      "logit_confidence": 0.65,
+      "psc_score": 0.22,
+      "status": "SAFE",
+      "ssp_triggered": false
+    },
+    {
+      "position": 2,
+      "token_text": " in",
+      "logit_confidence": 0.85,
+      "psc_score": 0.18,
+      "status": "SAFE",
+      "ssp_triggered": false
+    },
+    {
+      "position": 3,
+      "token_text": " silence",
+      "logit_confidence": 0.6,
+      "psc_score": 0.25,
+      "status": "SAFE",
+      "ssp_triggered": false
+    }
+  ],
+  "generation_metadata": {
+    "quantization": "int8",
+    "layers_used": [
+      11,
+      12,
+      13,
+      14
+    ],
+    "commit_hash": "mock-commit-hash-gemma2b",
+    "session_timestamp": "2026-08-09T10:29:51.541105+00:00"
+  }
+}
