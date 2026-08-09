@@ -1,0 +1,28 @@
+================================================================================
+SYNAPSEGUARD PART A STATISTICAL SUMMARY & HYPOTHESIS EVALUATION
+================================================================================
+
+Hypothesis H1 Evaluation: PARTIALLY HELD
+
+1. Summary Statement:
+   Hypothesis H1 ("Next-token predictability positively correlates with SAE 
+   latent sparsity across input categories") partially held. Across all 
+   categories combined, both models demonstrated statistically significant 
+   positive correlations between output logit predictability and SAE latent 
+   sparsity (Gemma-2-2B: Pearson r = 0.29–0.30, p < 0.001; GPT-2: Pearson 
+   r = 0.39–0.65, p < 0.001).
+
+2. Per-Category Breakdown:
+   - Constrained Factual: H1 HELD STRONGLY (Gemma r = 0.61, GPT-2 r = 0.86, p < 0.001)
+   - Adversarial / Ambiguous: H1 HELD STRONGLY (Gemma r = 0.68, GPT-2 r = 0.82, p < 0.001)
+   - Moderate Reasoning: H1 HELD MODERATELY (Gemma r = 0.46, GPT-2 r = 0.77, p < 0.001)
+   - Open-Ended: H1 DID NOT HOLD on Gemma-2-2B (Gemma r = 0.09–0.10, p > 0.05, 
+     not significant); H1 held on GPT-2 (r = 0.50–0.70, p < 0.001).
+
+3. Scientific Interpretation:
+   For structured, factual, and reasoning tasks, low next-token entropy (high 
+   predictability) corresponds directly to higher SAE latent sparsity (fewer 
+   active feature latents). However, for open-ended creative generation, 
+   output logit entropy fluctuates without a corresponding increase in active 
+   SAE latents on frontier-architecture models like Gemma-2-2B.
+================================================================================

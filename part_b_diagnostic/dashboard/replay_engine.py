@@ -105,7 +105,7 @@ def run_cli_replay(trace_path: str, delay: float = 0.2):
 
 def main():
     parser = argparse.ArgumentParser(description="SynapseGuard Diagnostic Replay Engine")
-    parser.add_argument("trace", nargs="?", default="part_b_diagnostic/dashboard/mock_trace.json", help="Path to JSON trace file")
+    parser.add_argument("trace", nargs="?", default="data/results/demo_traces/demo_02_hallucination_prone.json", help="Path to JSON trace file")
     parser.add_argument("--delay", type=float, default=0.2, help="Per-token animation delay in seconds")
     args = parser.parse_args()
     
