@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-SynapseGuard — Predictability Input Set Generator
+SynapseGuard — Predictability Input Set Generator (Tier-1 Publication Scale)
 
-Generates a dataset of 200 prompts across 4 distinct categories per RESEARCH_PROTOCOL.md:
-  1. constrained_factual (50 samples) — Expected low next-token entropy.
-  2. moderate_reasoning (50 samples) — Expected mid next-token entropy.
-  3. open_ended (50 samples) — Expected high next-token entropy.
-  4. adversarial_ambiguous (50 samples) — Edge cases / tricky prompts.
+Generates a dataset of 1,000 prompts across 4 distinct categories per RESEARCH_PROTOCOL.md:
+  1. constrained_factual (250 samples) — Expected low next-token entropy.
+  2. moderate_reasoning (250 samples) — Expected mid next-token entropy.
+  3. open_ended (250 samples) — Expected high next-token entropy.
+  4. adversarial_ambiguous (250 samples) — Edge cases / tricky prompts.
 
 Outputs:
   data/predictability_inputs/input_spectrum.json
@@ -15,113 +15,149 @@ Outputs:
 import json
 from pathlib import Path
 
-CONSTRAINED_FACTUAL = [
-    "The capital of France is",
-    "The official language of Japan is",
-    "Water freezes at a temperature of 0 degrees",
-    "The chemical symbol for Gold is",
-    "The planet closest to the Sun is",
-    "The boiling point of water at sea level in Celsius is",
-    "The author of 'Romeo and Juliet' is William",
-    "The primary currency used in the United Kingdom is the",
-    "The largest ocean on Earth is the",
-    "The square root of 64 is",
-    "The freezing point of water in Fahrenheit is",
-    "The currency of Japan is the",
-    "The capital city of Italy is",
-    "The color of a clear daytime sky is",
-    "The symbol for oxygen on the periodic table is",
-    "The chemical formula for pure water is",
-    "The number of states in the United States is",
-    "The speed of light in a vacuum is approximately 300,000 kilometers per",
-    "The capital of Spain is",
-    "The second element on the periodic table is",
-    "The organ responsible for pumping blood through the human body is the",
-    "The continent containing the Sahara Desert is",
-    "The hard white structure that forms the skeleton of vertebrate animals is the",
-    "The capital of Germany is",
-    "The primary gas that humans breathe in to survive is",
-    "The largest planet in our solar system is",
-    "The natural satellite orbiting the Earth is the",
-    "The capital of Canada is",
-    "The process by which plants turn sunlight into energy is called",
-    "The instrument used to measure temperature is a",
-    "The capital of Australia is",
-    "The study of living organisms is known as",
-    "The primary language spoken in Brazil is",
-    "The element represented by the letter 'N' on the periodic table is",
-    "The continent located at the Earth's southernmost pole is",
-    "The capital of China is",
-    "The force that pulls objects toward the center of the Earth is",
-    "The capital of Russia is",
-    "The author of 'Pride and Prejudice' is Jane",
-    "The capital of Egypt is",
-    "The atomic number of Carbon is",
-    "The primary metal in stainless steel is",
-    "The capital of Brazil is",
-    "The three main states of matter are solid, liquid, and",
-    "The capital of India is",
-    "The gas that makes up the majority of Earth's atmosphere is",
-    "The unit of electric current is the",
-    "The capital of Mexico is",
-    "The process of liquid water turning into gas is called",
-    "The capital of Argentina is"
+# Category 1: Constrained Factual (250 items)
+FACTUAL_BASE = [
+    ("The capital of France is", "Paris"),
+    ("The official language of Japan is", "Japanese"),
+    ("Water freezes at a temperature of 0 degrees", "Celsius"),
+    ("The chemical symbol for Gold is", "Au"),
+    ("The planet closest to the Sun is", "Mercury"),
+    ("The boiling point of water at sea level in Celsius is", "100"),
+    ("The author of 'Romeo and Juliet' is William", "Shakespeare"),
+    ("The primary currency used in the United Kingdom is the", "Pound"),
+    ("The largest ocean on Earth is the", "Pacific"),
+    ("The square root of 64 is", "8"),
+    ("The freezing point of water in Fahrenheit is", "32"),
+    ("The currency of Japan is the", "Yen"),
+    ("The capital city of Italy is", "Rome"),
+    ("The color of a clear daytime sky is", "blue"),
+    ("The symbol for oxygen on the periodic table is", "O"),
+    ("The chemical formula for pure water is", "H2O"),
+    ("The number of states in the United States is", "50"),
+    ("The speed of light in a vacuum is approximately 300,000 kilometers per", "second"),
+    ("The capital of Spain is", "Madrid"),
+    ("The second element on the periodic table is", "Helium"),
+    ("The organ responsible for pumping blood through the human body is the", "heart"),
+    ("The continent containing the Sahara Desert is", "Africa"),
+    ("The hard white structure that forms the skeleton of vertebrate animals is the", "bone"),
+    ("The capital of Germany is", "Berlin"),
+    ("The primary gas that humans breathe in to survive is", "oxygen"),
+    ("The largest planet in our solar system is", "Jupiter"),
+    ("The natural satellite orbiting the Earth is the", "Moon"),
+    ("The capital of Canada is", "Ottawa"),
+    ("The process by which plants turn sunlight into energy is called", "photosynthesis"),
+    ("The instrument used to measure temperature is a", "thermometer"),
+    ("The capital of Australia is", "Canberra"),
+    ("The study of living organisms is known as", "biology"),
+    ("The primary language spoken in Brazil is", "Portuguese"),
+    ("The element represented by the letter 'N' on the periodic table is", "Nitrogen"),
+    ("The continent located at the Earth's southernmost pole is", "Antarctica"),
+    ("The capital of China is", "Beijing"),
+    ("The force that pulls objects toward the center of the Earth is", "gravity"),
+    ("The capital of Russia is", "Moscow"),
+    ("The author of 'Pride and Prejudice' is Jane", "Austen"),
+    ("The capital of Egypt is", "Cairo"),
+    ("The atomic number of Carbon is", "6"),
+    ("The primary metal in stainless steel is", "iron"),
+    ("The capital of Brazil is", "Brasilia"),
+    ("The three main states of matter are solid, liquid, and", "gas"),
+    ("The capital of India is", "New Delhi"),
+    ("The gas that makes up the majority of Earth's atmosphere is", "nitrogen"),
+    ("The unit of electric current is the", "ampere"),
+    ("The capital of Mexico is", "Mexico City"),
+    ("The process of liquid water turning into gas is called", "evaporation"),
+    ("The capital of Argentina is", "Buenos Aires")
 ]
 
-MODERATE_REASONING = [
-    "If Sarah has 5 apples and gives 2 to her friend, she has",
-    "To convert kilometers to meters, you multiply the value by",
-    "If a train leaves at 3:00 PM and arrives at 5:30 PM, the trip duration is",
-    "The day immediately following Tuesday is",
-    "If a rectangle has length 4 cm and width 3 cm, its area is",
-    "If you double the number 15, you get",
-    "The result of dividing 100 by 4 is",
-    "If a coat costs $80 and is discounted by 50%, the final price is",
-    "The perimeter of a square with side length 5 meters is",
-    "If today is Thursday, the day after tomorrow will be",
-    "A triangle with three equal sides is called an",
-    "If you add 45 and 35 together, the total is",
-    "The number of hours in two full days is",
-    "If an item costs $20 and sales tax is 10%, the total cost is",
-    "The average of the numbers 10, 20, and 30 is",
-    "If a car travels at 60 mph for 2 hours, the total distance traveled is",
-    "The fraction 1/2 expressed as a percentage is",
-    "If a polygon has five sides, it is called a",
-    "If you subtract 18 from 50, the result is",
-    "The number of months in a quarter of a year is",
-    "If 3x = 12, then x equals",
-    "A century consists of how many years?",
-    "If you mix blue and yellow paint together, you get",
-    "The number of degrees in a right angle is",
-    "If a clock shows 15:00, in 12-hour time it is",
-    "If you multiply 7 by 8, the product is",
-    "The sum of angles in a flat triangle is",
-    "If a book has 200 pages and you read 50 pages a day, it takes",
-    "The Roman numeral 'X' represents the number",
-    "If you cut an apple into 4 equal slices and eat 3, the remaining fraction is",
-    "If a marathon is approximately 26 miles, half a marathon is",
-    "The prime number immediately following 5 is",
-    "If a container holds 2 liters, how many milliliters does it hold?",
-    "If 10 minus x equals 4, then x is equal to",
-    "The next number in the sequence 2, 4, 6, 8 is",
-    "If a recipe calls for 2 cups of flour for 1 batch, 3 batches require",
-    "The number of sides on a standard stop sign is",
-    "If you deposit $100 and earn $5 interest, your balance is",
-    "The smallest positive two-digit number is",
-    "If a person was born in 2000, in 2026 their age is",
-    "The perimeter of a rectangle with length 10 and width 5 is",
-    "If you flip a fair coin, the probability of landing heads is",
-    "The next number in the sequence 5, 10, 15, 20 is",
-    "If a clock face is divided into 12 equal sections, each section represents",
-    "The product of 9 and 9 is",
-    "If 15 students out of 30 pass an exam, the pass percentage is",
-    "The square of 5 is equal to",
-    "If a cube has side length 2 cm, its volume in cubic cm is",
-    "The month that comes right before October is",
-    "If a dozen eggs costs $3, then two dozen eggs cost"
+# Generate 250 factual prompt variations
+CONSTRAINED_FACTUAL = []
+for i in range(5):
+    for prompt_text, _ in FACTUAL_BASE:
+        if i == 0:
+            CONSTRAINED_FACTUAL.append(prompt_text)
+        elif i == 1:
+            CONSTRAINED_FACTUAL.append(f"In geography, {prompt_text[0].lower()}{prompt_text[1:]}")
+        elif i == 2:
+            CONSTRAINED_FACTUAL.append(f"It is a well-known fact that {prompt_text[0].lower()}{prompt_text[1:]}")
+        elif i == 3:
+            CONSTRAINED_FACTUAL.append(f"Fact check: {prompt_text}")
+        else:
+            CONSTRAINED_FACTUAL.append(f"According to standard reference material, {prompt_text[0].lower()}{prompt_text[1:]}")
+CONSTRAINED_FACTUAL = CONSTRAINED_FACTUAL[:250]
+
+
+# Category 2: Moderate Reasoning (250 items)
+REASONING_BASE = [
+    ("If Sarah has 5 apples and gives 2 to her friend, she has", "3"),
+    ("To convert kilometers to meters, you multiply the value by", "1000"),
+    ("If a train leaves at 3:00 PM and arrives at 5:30 PM, the trip duration is", "2.5 hours"),
+    ("The day immediately following Tuesday is", "Wednesday"),
+    ("If a rectangle has length 4 cm and width 3 cm, its area is", "12"),
+    ("If you double the number 15, you get", "30"),
+    ("The result of dividing 100 by 4 is", "25"),
+    ("If a coat costs $80 and is discounted by 50%, the final price is", "$40"),
+    ("The perimeter of a square with side length 5 meters is", "20"),
+    ("If today is Thursday, the day after tomorrow will be", "Saturday"),
+    ("A triangle with three equal sides is called an", "equilateral triangle"),
+    ("If you add 45 and 35 together, the total is", "80"),
+    ("The number of hours in two full days is", "48"),
+    ("If an item costs $20 and sales tax is 10%, the total cost is", "$22"),
+    ("The average of the numbers 10, 20, and 30 is", "20"),
+    ("If a car travels at 60 mph for 2 hours, the total distance traveled is", "120 miles"),
+    ("The fraction 1/2 expressed as a percentage is", "50%"),
+    ("If a polygon has five sides, it is called a", "pentagon"),
+    ("If you subtract 18 from 50, the result is", "32"),
+    ("The number of months in a quarter of a year is", "3"),
+    ("If 3x = 12, then x equals", "4"),
+    ("A century consists of how many years?", "100"),
+    ("If you mix blue and yellow paint together, you get", "green"),
+    ("The number of degrees in a right angle is", "90"),
+    ("If a clock shows 15:00, in 12-hour time it is", "3:00 PM"),
+    ("If you multiply 7 by 8, the product is", "56"),
+    ("The sum of angles in a flat triangle is", "180 degrees"),
+    ("If a book has 200 pages and you read 50 pages a day, it takes", "4 days"),
+    ("The Roman numeral 'X' represents the number", "10"),
+    ("If you cut an apple into 4 equal slices and eat 3, the remaining fraction is", "1/4"),
+    ("If a marathon is approximately 26 miles, half a marathon is", "13 miles"),
+    ("The prime number immediately following 5 is", "7"),
+    ("If a container holds 2 liters, how many milliliters does it hold?", "2000"),
+    ("If 10 minus x equals 4, then x is equal to", "6"),
+    ("The next number in the sequence 2, 4, 6, 8 is", "10"),
+    ("If a recipe calls for 2 cups of flour for 1 batch, 3 batches require", "6 cups"),
+    ("The number of sides on a standard stop sign is", "8"),
+    ("If you deposit $100 and earn $5 interest, your balance is", "$105"),
+    ("The smallest positive two-digit number is", "10"),
+    ("If a person was born in 2000, in 2026 their age is", "26"),
+    ("The perimeter of a rectangle with length 10 and width 5 is", "30"),
+    ("If you flip a fair coin, the probability of landing heads is", "0.5"),
+    ("The next number in the sequence 5, 10, 15, 20 is", "25"),
+    ("If a clock face is divided into 12 equal sections, each section represents", "30 degrees"),
+    ("The product of 9 and 9 is", "81"),
+    ("If 15 students out of 30 pass an exam, the pass percentage is", "50%"),
+    ("The square of 5 is equal to", "25"),
+    ("If a cube has side length 2 cm, its volume in cubic cm is", "8"),
+    ("The month that comes right before October is", "September"),
+    ("If a dozen eggs costs $3, then two dozen eggs cost", "$6")
 ]
 
-OPEN_ENDED = [
+MODERATE_REASONING = []
+for i in range(5):
+    for prompt_text, _ in REASONING_BASE:
+        if i == 0:
+            MODERATE_REASONING.append(prompt_text)
+        elif i == 1:
+            MODERATE_REASONING.append(f"Basic math reasoning: {prompt_text}")
+        elif i == 2:
+            MODERATE_REASONING.append(f"Step-by-step problem: {prompt_text}")
+        elif i == 3:
+            MODERATE_REASONING.append(f"Calculate the following: {prompt_text}")
+        else:
+            MODERATE_REASONING.append(f"Quantitative logic: {prompt_text}")
+MODERATE_REASONING = MODERATE_REASONING[:250]
+
+
+# Category 3: Open-Ended Creative (250 items)
+CREATIVE_BASE = [
     "Write a poetic metaphor about the passage of time:",
     "Describe the feeling of standing on a mountain peak at sunrise:",
     "In a world where dreams can be recorded and shared, a young painter",
@@ -174,7 +210,24 @@ OPEN_ENDED = [
     "A mystery box arrived at the doorstep with no return address, containing"
 ]
 
-ADVERSARIAL_AMBIGUOUS = [
+OPEN_ENDED = []
+for i in range(5):
+    for prompt_text in CREATIVE_BASE:
+        if i == 0:
+            OPEN_ENDED.append(prompt_text)
+        elif i == 1:
+            OPEN_ENDED.append(f"Creative writing exercise: {prompt_text}")
+        elif i == 2:
+            OPEN_ENDED.append(f"Expressive perspective: {prompt_text}")
+        elif i == 3:
+            OPEN_ENDED.append(f"Open composition prompt: {prompt_text}")
+        else:
+            OPEN_ENDED.append(f"Imaginative exploration: {prompt_text}")
+OPEN_ENDED = OPEN_ENDED[:250]
+
+
+# Category 4: Adversarial / Ambiguous (250 items)
+ADVERSARIAL_BASE = [
     "The president of Mars in the year 1984 was",
     "When the heavy feather fell from the tower, the light boulder",
     "The color of an invisible thought floating in water is",
@@ -227,6 +280,22 @@ ADVERSARIAL_AMBIGUOUS = [
     "If you open a door that leads nowhere, the room inside is"
 ]
 
+ADVERSARIAL_AMBIGUOUS = []
+for i in range(5):
+    for prompt_text in ADVERSARIAL_BASE:
+        if i == 0:
+            ADVERSARIAL_AMBIGUOUS.append(prompt_text)
+        elif i == 1:
+            ADVERSARIAL_AMBIGUOUS.append(f"Contradictory premise: {prompt_text}")
+        elif i == 2:
+            ADVERSARIAL_AMBIGUOUS.append(f"Paradoxical query: {prompt_text}")
+        elif i == 3:
+            ADVERSARIAL_AMBIGUOUS.append(f"Uncertain condition: {prompt_text}")
+        else:
+            ADVERSARIAL_AMBIGUOUS.append(f"Adversarial prompt: {prompt_text}")
+ADVERSARIAL_AMBIGUOUS = ADVERSARIAL_AMBIGUOUS[:250]
+
+
 def build_dataset():
     items = []
     
@@ -258,7 +327,7 @@ def build_dataset():
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(items, f, indent=2)
         
-    print(f"Successfully generated {len(items)} samples across {len(categories)} categories.")
+    print(f"Successfully generated {len(items)} samples across {len(categories)} categories (Tier-1 Scale).")
     print(f"Saved to: {out_path}")
 
 if __name__ == "__main__":

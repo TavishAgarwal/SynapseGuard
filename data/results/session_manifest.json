@@ -1,6 +1,6 @@
 {
-  "session_date": "2026-08-09T17:03:10.192080+00:00",
-  "git_commit_hash": "a183fc988163ef27bf761954ff3e76e1e1310f36",
+  "session_date": "2026-08-09T17:24:46.596983+00:00",
+  "git_commit_hash": "331200bc6d74961da70a755ea71a790a46f6f941",
   "random_seed": 42,
   "python_version": "3.11.9",
   "pytorch_version": "2.6.0+cu124",
@@ -55,12 +55,12 @@
       8
     ]
   },
-  "part_a_sample_count": 200,
-  "part_a_total_extraction_rows": 1600,
+  "part_a_sample_count": 800,
+  "part_a_total_extraction_rows": 6400,
   "benchmark_sample_counts": {
-    "truthfulqa": 80,
-    "halueval": 80,
-    "rag_grounding": 60
+    "truthfulqa": 100,
+    "halueval": 100,
+    "rag_grounding": 100
   },
   "gpu": "RTX 3050 6GB (WSL2)",
   "quantization": "int8 (bitsandbytes)",
