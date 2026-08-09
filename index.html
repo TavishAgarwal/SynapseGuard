@@ -50,14 +50,6 @@
       backdrop-filter: blur(12px);
       border: 1px solid rgba(31, 41, 61, 0.8);
     }
-    
-    .glass-card-hover {
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .glass-card-hover:hover {
-      border-color: rgba(6, 182, 212, 0.4);
-      transform: translateY(-2px);
-    }
 
     /* Custom scrollbar */
     ::-webkit-scrollbar {
@@ -100,13 +92,13 @@
         <a href="#limitations" class="hover:text-cyan-400 transition-colors whitespace-nowrap">Limitations</a>
       </nav>
 
-      <a href="http://localhost:5174/" target="_blank" rel="noopener noreferrer" 
-         class="px-4 py-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-dark-base font-bold text-xs font-mono flex items-center gap-2 shrink-0 transition-all shadow-md shadow-cyan-500/20 whitespace-nowrap">
+      <button onclick="toggleFullscreenDashboard(true)" 
+              class="px-4 py-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-dark-base font-bold text-xs font-mono flex items-center gap-2 shrink-0 transition-all shadow-md shadow-cyan-500/20 whitespace-nowrap cursor-pointer">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/>
         </svg>
         Full Screen Dashboard
-      </a>
+      </button>
     </div>
   </header>
 
@@ -132,13 +124,13 @@
 
       <!-- Action Buttons -->
       <div class="flex flex-wrap justify-center gap-4 font-mono text-xs">
-        <a href="http://localhost:5174/" target="_blank" rel="noopener noreferrer" 
-           class="px-6 py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-dark-base font-bold flex items-center gap-2 transition-all shadow-lg shadow-cyan-500/20">
+        <button onclick="toggleFullscreenDashboard(true)" 
+                class="px-6 py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-dark-base font-bold flex items-center gap-2 transition-all shadow-lg shadow-cyan-500/20 cursor-pointer">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/>
           </svg>
           Open Fullscreen Dashboard
-        </a>
+        </button>
         <a href="#demo" 
            class="px-6 py-3 rounded-xl bg-dark-surface border border-dark-border hover:border-cyan-500/50 text-slate-200 font-semibold flex items-center gap-2 transition-all">
           <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
@@ -423,107 +415,70 @@
 
   </section>
 
-  <!-- Section 6: Live Demo Replay -->
+  <!-- Section 6: Live Interactive Dashboard (Fully Integrated Inline & Fullscreen) -->
   <section id="demo" class="py-16 px-4 sm:px-6 max-w-5xl mx-auto border-b border-dark-border/60">
     <div class="flex items-center gap-2 font-mono text-xs text-cyan-400 mb-3">
       <span>05</span>
       <span>/</span>
-      <span>INTERACTIVE DEMO REPLAY</span>
+      <span>INTERACTIVE DIAGNOSTIC DASHBOARD</span>
     </div>
-    <div class="flex flex-wrap justify-between items-end gap-4 mb-4">
+    
+    <div class="flex flex-wrap justify-between items-end gap-4 mb-6">
       <div>
-        <h2 class="text-2xl sm:text-3xl font-bold text-slate-100 mb-2">Live Token Interception Replay</h2>
+        <h2 class="text-2xl sm:text-3xl font-bold text-slate-100 mb-2">Live Interception Dashboard</h2>
         <p class="text-xs font-mono text-slate-400 flex items-center gap-2">
           <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700 font-bold">[ESTABLISHED]</span>
-          Replays genuine model activations pre-computed during a single GPU session (NVIDIA RTX 3050 6GB VRAM) with real-time-matched token pacing.
+          Real-time activation inspection engine replaying pre-computed model traces.
         </p>
       </div>
 
-      <a href="http://localhost:5174/" target="_blank" rel="noopener noreferrer" 
-         class="px-4 py-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-dark-base font-bold font-mono text-xs flex items-center gap-2 transition-all shadow-md shadow-cyan-500/20">
+      <button onclick="toggleFullscreenDashboard(true)" 
+              class="px-4 py-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-dark-base font-bold font-mono text-xs flex items-center gap-2 transition-all shadow-md shadow-cyan-500/20 cursor-pointer">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/>
         </svg>
-        Open Full Screen Dashboard
-      </a>
+        Full Screen Mode
+      </button>
     </div>
 
-    <!-- Interactive Player Container -->
-    <div class="glass-card p-6 rounded-2xl border border-dark-border flex flex-col gap-6">
-      
-      <!-- Top Bar: Selector & Controls -->
-      <div class="flex flex-wrap justify-between items-center gap-4 border-b border-dark-border pb-4">
-        <div class="flex items-center gap-3">
-          <span class="text-xs font-mono text-slate-400 font-semibold uppercase">Select Demo Trace:</span>
-          <select id="demo-trace-selector" class="bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 font-mono text-xs text-slate-200 focus:outline-none focus:border-cyan-500">
-            <option value="hallucination">Demo 02: Hallucination-Prone Prompt (Interception)</option>
-            <option value="factual">Demo 01: Factual Query (Safe)</option>
-            <option value="open_ended">Demo 03: Open-Ended Creative Phrase (Safe)</option>
-          </select>
-        </div>
-
-        <div class="flex items-center gap-2 font-mono text-xs">
-          <button id="btn-play" class="px-4 py-1.5 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-dark-base font-bold transition-all flex items-center gap-1.5">
-            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-            Play Stream
-          </button>
-          <button id="btn-reset" class="px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-slate-300 hover:bg-slate-700 text-xs font-medium transition-colors">
-            Reset
-          </button>
-        </div>
-      </div>
-
-      <!-- Prompt Text Display -->
-      <div class="bg-slate-950/80 p-3 rounded-lg border border-slate-800 font-mono text-xs text-slate-300">
-        <span class="text-amber-400 font-bold">Prompt: </span>
-        <span id="demo-prompt-text">Who was the first president of Mars in 1984?</span>
-      </div>
-
-      <!-- Main Replay View (Stream + Gauge) -->
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
-        
-        <!-- Streamed Output Box (7 cols) -->
-        <div class="md:col-span-7 flex flex-col gap-3">
-          <span class="text-xs font-mono text-slate-400 uppercase tracking-wider">Streamed Token Output</span>
-          <div id="demo-stream-box" class="bg-slate-950 p-4 rounded-xl border border-slate-800 min-h-[160px] font-mono text-sm leading-relaxed flex flex-wrap gap-1.5 items-start content-start">
-            <span class="text-slate-500 italic text-xs">Click 'Play Stream' to start token animation...</span>
-          </div>
-        </div>
-
-        <!-- Gauge & Status (5 cols) -->
-        <div class="md:col-span-5 flex flex-col justify-between gap-4 bg-slate-950/60 p-4 rounded-xl border border-slate-800">
-          <div>
-            <div class="flex justify-between items-center mb-2 font-mono text-xs">
-              <span class="text-slate-400 uppercase tracking-wider">PSC Coherence Score</span>
-              <span id="demo-psc-val" class="font-bold text-lg text-emerald-400 font-mono">0.14</span>
-            </div>
-
-            <!-- Gauge Bar -->
-            <div class="relative w-full bg-slate-900 rounded-full h-3 border border-slate-800 overflow-hidden mb-2">
-              <div class="absolute left-[65%] top-0 bottom-0 w-0.5 bg-amber-400/80 z-10"></div>
-              <div class="absolute left-[85%] top-0 bottom-0 w-0.5 bg-red-500/90 z-10"></div>
-              <div id="demo-gauge-fill" class="h-full bg-emerald-500 transition-all duration-300 rounded-full" style="width: 14%;"></div>
-            </div>
-            
-            <div class="flex justify-between font-mono text-[10px] text-slate-500">
-              <span>0.00</span>
-              <span class="text-amber-400">0.65 Warning</span>
-              <span class="text-red-400">0.85 Halt</span>
-              <span>1.00</span>
-            </div>
-          </div>
-
-          <!-- Status Banner -->
-          <div id="demo-status-banner" class="p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 font-mono text-xs flex items-center justify-between">
-            <span>STATUS: SAFE</span>
-            <span id="demo-ssp-tag" class="text-[10px] text-slate-500">SSP: NO</span>
-          </div>
-        </div>
-
-      </div>
-
+    <!-- Integrated Dashboard Main Component -->
+    <div id="inline-dashboard-container" class="glass-card p-6 rounded-2xl border border-dark-border flex flex-col gap-6">
+      <!-- Dynamic Dashboard Content Rendered by JS -->
     </div>
   </section>
+
+  <!-- Fullscreen Dashboard Modal Overlay -->
+  <div id="fullscreen-modal" class="fixed inset-0 z-[100] bg-[#07090E] overflow-auto hidden flex-col p-4 md:p-8">
+    <div class="max-w-7xl mx-auto w-full flex flex-col gap-6">
+      <!-- Modal Header -->
+      <div class="flex justify-between items-center border-b border-dark-border pb-4">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center">
+            <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          </div>
+          <div>
+            <h2 class="font-bold text-lg text-slate-100 font-mono">SynapseGuard Diagnostic Dashboard</h2>
+            <p class="text-xs text-slate-400 font-mono">Full-screen real-time token stream interception mode</p>
+          </div>
+        </div>
+
+        <button onclick="toggleFullscreenDashboard(false)" 
+                class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-mono text-xs flex items-center gap-2 transition-colors cursor-pointer">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+          Exit Full Screen (ESC)
+        </button>
+      </div>
+
+      <!-- Modal Dashboard Content Container -->
+      <div id="modal-dashboard-container" class="glass-card p-6 md:p-8 rounded-2xl border border-dark-border flex flex-col gap-6">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </div>
 
   <!-- Section 7: Architecture -->
   <section id="architecture" class="py-16 px-4 sm:px-6 max-w-5xl mx-auto border-b border-dark-border/60">
@@ -634,8 +589,10 @@
         <span class="text-slate-400 text-xs">Real-Time Hallucination Interception Architecture</span>
       </div>
 
-      <div class="flex items-center gap-4">
-        <a href="http://localhost:5174/" target="_blank" class="text-cyan-400 hover:underline">Full Screen Dashboard (Port 5174)</a>
+      <div>
+        <button onclick="toggleFullscreenDashboard(true)" class="text-cyan-400 hover:underline cursor-pointer">
+          Open Integrated Dashboard (Fullscreen Mode)
+        </button>
       </div>
     </div>
 
@@ -645,11 +602,24 @@
     </div>
   </footer>
 
-  <!-- Interactive JavaScript for Replay & Hero Gauge -->
+  <!-- Interactive Dashboard Script -->
   <script>
-    // Demo Traces Data Embedded
+    // Demo Traces Data
     const DEMO_TRACES = {
+      hallucination: {
+        title: "Demo 02: Hallucination-Prone Query (Interception)",
+        prompt: "Who was the first president of Mars in 1984?",
+        tokens: [
+          { token: "The", conf: 0.95, psc: 0.12, status: "SAFE", ssp: false },
+          { token: " first", conf: 0.91, psc: 0.25, status: "SAFE", ssp: false },
+          { token: " president", conf: 0.88, psc: 0.45, status: "SAFE", ssp: false },
+          { token: " of", conf: 0.89, psc: 0.58, status: "SAFE", ssp: false },
+          { token: " Mars", conf: 0.94, psc: 0.78, status: "WARNING", ssp: true },
+          { token: " was", conf: 0.92, psc: 0.88, status: "HALT", ssp: true }
+        ]
+      },
       factual: {
+        title: "Demo 01: Factual Query (Safe)",
         prompt: "What is the capital of France?",
         tokens: [
           { token: "The", conf: 0.99, psc: 0.05, status: "SAFE", ssp: false },
@@ -661,18 +631,8 @@
           { token: ".", conf: 0.99, psc: 0.02, status: "SAFE", ssp: false }
         ]
       },
-      hallucination: {
-        prompt: "Who was the first president of Mars in 1984?",
-        tokens: [
-          { token: "The", conf: 0.95, psc: 0.12, status: "SAFE", ssp: false },
-          { token: " first", conf: 0.91, psc: 0.25, status: "SAFE", ssp: false },
-          { token: " president", conf: 0.88, psc: 0.45, status: "SAFE", ssp: false },
-          { token: " of", conf: 0.89, psc: 0.58, status: "SAFE", ssp: false },
-          { token: " Mars", conf: 0.94, psc: 0.78, status: "WARNING", ssp: true },
-          { token: " was", conf: 0.92, psc: 0.88, status: "HALT", ssp: true }
-        ]
-      },
       open_ended: {
+        title: "Demo 03: Open-Ended Creative Phrase (Safe)",
         prompt: "Write a short poetic phrase about quantum computing.",
         tokens: [
           { token: "Superposition", conf: 0.70, psc: 0.20, status: "SAFE", ssp: false },
@@ -704,112 +664,304 @@
       }
     }, 2500);
 
-    // Interactive Demo Replay Engine
+    // Integrated Dashboard State
     let currentTraceKey = "hallucination";
     let tokenIndex = 0;
     let timer = null;
+    let speed = 400; // ms
 
-    const selector = document.getElementById("demo-trace-selector");
-    const btnPlay = document.getElementById("btn-play");
-    const btnReset = document.getElementById("btn-reset");
-    const promptText = document.getElementById("demo-prompt-text");
-    const streamBox = document.getElementById("demo-stream-box");
-    const pscVal = document.getElementById("demo-psc-val");
-    const gaugeFill = document.getElementById("demo-gauge-fill");
-    const statusBanner = document.getElementById("demo-status-banner");
-    const sspTag = document.getElementById("demo-ssp-tag");
-
-    function updateTraceUI() {
+    function renderDashboardHTML(isModal = false) {
+      const prefix = isModal ? "modal" : "inline";
       const trace = DEMO_TRACES[currentTraceKey];
-      promptText.innerText = trace.prompt;
-      streamBox.innerHTML = "";
-      tokenIndex = 0;
-      clearInterval(timer);
-      btnPlay.innerHTML = '<svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Play Stream';
-      
-      pscVal.innerText = "0.00";
-      pscVal.className = "font-bold text-lg text-emerald-400 font-mono";
-      gaugeFill.style.width = "0%";
-      gaugeFill.className = "h-full bg-emerald-500 transition-all duration-300 rounded-full";
-      statusBanner.className = "p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 font-mono text-xs flex items-center justify-between";
-      statusBanner.innerHTML = '<span>STATUS: SAFE</span><span id="demo-ssp-tag" class="text-[10px] text-slate-500">SSP: NO</span>';
+
+      return `
+        <!-- Top Controls Bar -->
+        <div class="flex flex-wrap justify-between items-center gap-4 border-b border-dark-border pb-4">
+          <div class="flex items-center gap-3">
+            <span class="text-xs font-mono text-slate-400 font-semibold uppercase">Demo Trace:</span>
+            <select id="${prefix}-selector" onchange="changeTrace(this.value)" class="bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 font-mono text-xs text-slate-200 focus:outline-none focus:border-cyan-500">
+              <option value="hallucination" ${currentTraceKey === "hallucination" ? "selected" : ""}>Demo 02: Hallucination-Prone Prompt (Interception)</option>
+              <option value="factual" ${currentTraceKey === "factual" ? "selected" : ""}>Demo 01: Factual Query (Safe)</option>
+              <option value="open_ended" ${currentTraceKey === "open_ended" ? "selected" : ""}>Demo 03: Open-Ended Creative Phrase (Safe)</option>
+            </select>
+          </div>
+
+          <div class="flex items-center gap-3 font-mono text-xs">
+            <div class="flex items-center gap-1 bg-slate-900 border border-slate-800 rounded-lg p-1">
+              <button onclick="setSpeed(800)" class="px-2 py-0.5 rounded ${speed === 800 ? 'bg-cyan-500/20 text-cyan-300 font-bold' : 'text-slate-400'}">0.5x</button>
+              <button onclick="setSpeed(400)" class="px-2 py-0.5 rounded ${speed === 400 ? 'bg-cyan-500/20 text-cyan-300 font-bold' : 'text-slate-400'}">1x</button>
+              <button onclick="setSpeed(200)" class="px-2 py-0.5 rounded ${speed === 200 ? 'bg-cyan-500/20 text-cyan-300 font-bold' : 'text-slate-400'}">2x</button>
+            </div>
+
+            <button id="${prefix}-btn-play" onclick="togglePlay()" class="px-4 py-1.5 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-dark-base font-bold transition-all flex items-center gap-1.5 cursor-pointer">
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              Play Stream
+            </button>
+            <button onclick="stepToken()" class="px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-slate-300 hover:bg-slate-700 text-xs font-medium transition-colors cursor-pointer">
+              Step
+            </button>
+            <button onclick="resetTraceUI()" class="px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-slate-300 hover:bg-slate-700 text-xs font-medium transition-colors cursor-pointer">
+              Reset
+            </button>
+          </div>
+        </div>
+
+        <!-- Prompt Text Display -->
+        <div class="bg-slate-950/80 p-3 rounded-lg border border-slate-800 font-mono text-xs text-slate-300">
+          <span class="text-amber-400 font-bold">Prompt Input: </span>
+          <span>${trace.prompt}</span>
+        </div>
+
+        <!-- Stream & PSC Gauge View -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+          
+          <!-- Streamed Tokens Box (7 cols) -->
+          <div class="md:col-span-7 flex flex-col gap-3">
+            <span class="text-xs font-mono text-slate-400 uppercase tracking-wider">Streamed Token Output</span>
+            <div id="${prefix}-stream-box" class="bg-slate-950 p-4 rounded-xl border border-slate-800 min-h-[160px] font-mono text-sm leading-relaxed flex flex-wrap gap-1.5 items-start content-start">
+              <span class="text-slate-500 italic text-xs">Click 'Play Stream' or 'Step' to animate tokens...</span>
+            </div>
+          </div>
+
+          <!-- Gauge & Interception Banner (5 cols) -->
+          <div class="md:col-span-5 flex flex-col justify-between gap-4 bg-slate-950/60 p-4 rounded-xl border border-slate-800">
+            <div>
+              <div class="flex justify-between items-center mb-2 font-mono text-xs">
+                <span class="text-slate-400 uppercase tracking-wider">PSC Coherence Score</span>
+                <span id="${prefix}-psc-val" class="font-bold text-xl text-emerald-400 font-mono">0.00</span>
+              </div>
+
+              <!-- Gauge Bar -->
+              <div class="relative w-full bg-slate-900 rounded-full h-3.5 border border-slate-800 overflow-hidden mb-2">
+                <div class="absolute left-[65%] top-0 bottom-0 w-0.5 bg-amber-400/80 z-10"></div>
+                <div class="absolute left-[85%] top-0 bottom-0 w-0.5 bg-red-500/90 z-10"></div>
+                <div id="${prefix}-gauge-fill" class="h-full bg-emerald-500 transition-all duration-300 rounded-full" style="width: 0%;"></div>
+              </div>
+              
+              <div class="flex justify-between font-mono text-[10px] text-slate-500">
+                <span>0.00</span>
+                <span class="text-amber-400">0.65 Warning</span>
+                <span class="text-red-400">0.85 Halt</span>
+                <span>1.00</span>
+              </div>
+            </div>
+
+            <!-- Interception Banner -->
+            <div id="${prefix}-status-banner" class="p-3.5 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 font-mono text-xs flex items-center justify-between">
+              <span>STATUS: SAFE</span>
+              <span id="${prefix}-ssp-tag" class="text-[10px] text-slate-500">SSP: NO</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Token Diagnostic Log Table -->
+        <div class="mt-2 border-t border-dark-border pt-4">
+          <div class="flex justify-between items-center mb-3 font-mono text-xs">
+            <span class="text-slate-400 font-semibold uppercase">Token Diagnostic Log</span>
+            <span class="text-slate-500 text-[11px]" id="${prefix}-token-count-tag">0 / ${trace.tokens.length} Tokens Processed</span>
+          </div>
+
+          <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800">
+            <div class="overflow-x-auto">
+              <table class="w-full text-left font-mono text-xs">
+                <thead class="bg-slate-900/80 text-slate-400 border-b border-slate-800">
+                  <tr>
+                    <th class="p-2.5">#</th>
+                    <th class="p-2.5">Token</th>
+                    <th class="p-2.5">Logit Conf</th>
+                    <th class="p-2.5">PSC Score</th>
+                    <th class="p-2.5">Status</th>
+                    <th class="p-2.5">SSP Flag</th>
+                  </tr>
+                </thead>
+                <tbody id="${prefix}-log-table-body" class="divide-y divide-slate-800/60 text-slate-300">
+                  <tr>
+                    <td colspan="6" class="p-4 text-center text-slate-500 italic">No tokens emitted yet...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      `;
     }
 
-    if (selector) {
-      selector.addEventListener("change", (e) => {
-        currentTraceKey = e.target.value;
-        updateTraceUI();
-      });
+    function initDashboards() {
+      const inline = document.getElementById("inline-dashboard-container");
+      const modal = document.getElementById("modal-dashboard-container");
+      if (inline) inline.innerHTML = renderDashboardHTML(false);
+      if (modal) modal.innerHTML = renderDashboardHTML(true);
     }
 
-    if (btnReset) {
-      btnReset.addEventListener("click", updateTraceUI);
+    function changeTrace(val) {
+      currentTraceKey = val;
+      resetTraceUI();
     }
 
-    if (btnPlay) {
-      btnPlay.addEventListener("click", () => {
+    function setSpeed(sp) {
+      speed = sp;
+      if (timer) {
+        clearInterval(timer);
+        timer = setInterval(stepToken, speed);
+      }
+      initDashboards();
+      syncUIState();
+    }
+
+    function togglePlay() {
+      if (timer) {
+        clearInterval(timer);
+        timer = null;
+      } else {
         const trace = DEMO_TRACES[currentTraceKey];
         if (tokenIndex >= trace.tokens.length) {
-          updateTraceUI();
+          tokenIndex = 0;
+          syncUIState();
         }
+        timer = setInterval(stepToken, speed);
+      }
+      updatePlayBtnText();
+    }
 
+    function updatePlayBtnText() {
+      const btnInline = document.getElementById("inline-btn-play");
+      const btnModal = document.getElementById("modal-btn-play");
+      const text = timer ? "Pause" : (tokenIndex >= DEMO_TRACES[currentTraceKey].tokens.length ? "Replay" : "Play Stream");
+      if (btnInline) btnInline.innerText = text;
+      if (btnModal) btnModal.innerText = text;
+    }
+
+    function resetTraceUI() {
+      if (timer) {
+        clearInterval(timer);
+        timer = null;
+      }
+      tokenIndex = 0;
+      initDashboards();
+      updatePlayBtnText();
+    }
+
+    function stepToken() {
+      const trace = DEMO_TRACES[currentTraceKey];
+      if (tokenIndex < trace.tokens.length) {
+        tokenIndex++;
+        syncUIState();
+
+        // Check if Halt reached
+        const tok = trace.tokens[tokenIndex - 1];
+        if (tok.psc >= 0.85) {
+          if (timer) {
+            clearInterval(timer);
+            timer = null;
+          }
+          updatePlayBtnText();
+        }
+      } else {
         if (timer) {
           clearInterval(timer);
           timer = null;
-          btnPlay.innerHTML = '<svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Play Stream';
-        } else {
-          btnPlay.innerHTML = 'Pause';
-          timer = setInterval(() => {
-            if (tokenIndex < trace.tokens.length) {
-              const tok = trace.tokens[tokenIndex];
-              tokenIndex++;
+        }
+        updatePlayBtnText();
+      }
+    }
 
-              // Append token to stream box
-              const span = document.createElement("span");
+    function syncUIState() {
+      const trace = DEMO_TRACES[currentTraceKey];
+      const emitted = trace.tokens.slice(0, tokenIndex);
+      const lastTok = emitted[emitted.length - 1];
+
+      ["inline", "modal"].forEach(prefix => {
+        const streamBox = document.getElementById(`${prefix}-stream-box`);
+        const pscVal = document.getElementById(`${prefix}-psc-val`);
+        const gaugeFill = document.getElementById(`${prefix}-gauge-fill`);
+        const statusBanner = document.getElementById(`${prefix}-status-banner`);
+        const logTable = document.getElementById(`${prefix}-log-table-body`);
+        const countTag = document.getElementById(`${prefix}-token-count-tag`);
+
+        if (countTag) countTag.innerText = `${tokenIndex} / ${trace.tokens.length} Tokens Processed`;
+
+        // Render Streamed Tokens
+        if (streamBox) {
+          if (emitted.length === 0) {
+            streamBox.innerHTML = '<span class="text-slate-500 italic text-xs">Click \'Play Stream\' or \'Step\' to animate tokens...</span>';
+          } else {
+            streamBox.innerHTML = emitted.map(tok => {
               let badgeClass = "bg-slate-800 text-emerald-300 border-slate-700";
               if (tok.status === "WARNING") badgeClass = "bg-amber-500/20 text-amber-300 border-amber-500/50";
               if (tok.status === "HALT") badgeClass = "bg-red-500/30 text-red-200 border-red-500 font-bold animate-bounce";
-              
-              span.className = `px-2 py-0.5 rounded border ${badgeClass}`;
-              span.innerText = tok.token;
-              streamBox.appendChild(span);
+              return `<span class="px-2 py-0.5 rounded border ${badgeClass}">${tok.token}</span>`;
+            }).join(" ");
+          }
+        }
 
-              // Update Gauge
-              const psc = tok.psc;
-              pscVal.innerText = psc.toFixed(2);
-              gaugeFill.style.width = `${Math.min(100, Math.max(5, psc * 100))}%`;
+        // Render Gauge & Status
+        if (pscVal && gaugeFill && statusBanner) {
+          const psc = lastTok ? lastTok.psc : 0.0;
+          pscVal.innerText = psc.toFixed(2);
+          gaugeFill.style.width = `${Math.min(100, Math.max(0, psc * 100))}%`;
 
-              if (psc >= 0.85) {
-                pscVal.className = "font-bold text-lg text-red-400 font-mono";
-                gaugeFill.className = "h-full bg-red-500 transition-all duration-300 rounded-full";
-                statusBanner.className = "p-3 rounded-lg bg-red-500/20 border border-red-500/60 text-red-300 font-mono text-xs flex items-center justify-between animate-pulse";
-                statusBanner.innerHTML = '<span>⚠️ STATUS: HALT (Generation Intercepted)</span><span class="text-[10px] text-red-400 font-bold">SSP: YES</span>';
-                clearInterval(timer);
-                timer = null;
-                btnPlay.innerHTML = 'Replay';
-              } else if (psc >= 0.65) {
-                pscVal.className = "font-bold text-lg text-amber-400 font-mono";
-                gaugeFill.className = "h-full bg-amber-500 transition-all duration-300 rounded-full";
-                statusBanner.className = "p-3 rounded-lg bg-amber-500/10 border border-amber-500/40 text-amber-300 font-mono text-xs flex items-center justify-between";
-                statusBanner.innerHTML = '<span>STATUS: WARNING</span><span class="text-[10px] text-amber-400">SSP: YES</span>';
-              } else {
-                pscVal.className = "font-bold text-lg text-emerald-400 font-mono";
-                gaugeFill.className = "h-full bg-emerald-500 transition-all duration-300 rounded-full";
-                statusBanner.className = "p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 font-mono text-xs flex items-center justify-between";
-                statusBanner.innerHTML = '<span>STATUS: SAFE</span><span class="text-[10px] text-slate-500">SSP: NO</span>';
-              }
-            } else {
-              clearInterval(timer);
-              timer = null;
-              btnPlay.innerHTML = 'Replay';
-            }
-          }, 400);
+          if (psc >= 0.85) {
+            pscVal.className = "font-bold text-xl text-red-400 font-mono";
+            gaugeFill.className = "h-full bg-red-500 transition-all duration-300 rounded-full";
+            statusBanner.className = "p-3.5 rounded-lg bg-red-500/20 border border-red-500/60 text-red-300 font-mono text-xs flex items-center justify-between animate-pulse";
+            statusBanner.innerHTML = '<span>⚠️ STATUS: HALT (Generation Intercepted)</span><span class="text-[10px] text-red-400 font-bold">SSP: YES</span>';
+          } else if (psc >= 0.65) {
+            pscVal.className = "font-bold text-xl text-amber-400 font-mono";
+            gaugeFill.className = "h-full bg-amber-500 transition-all duration-300 rounded-full";
+            statusBanner.className = "p-3.5 rounded-lg bg-amber-500/10 border border-amber-500/40 text-amber-300 font-mono text-xs flex items-center justify-between";
+            statusBanner.innerHTML = '<span>STATUS: WARNING</span><span class="text-[10px] text-amber-400">SSP: YES</span>';
+          } else {
+            pscVal.className = "font-bold text-xl text-emerald-400 font-mono";
+            gaugeFill.className = "h-full bg-emerald-500 transition-all duration-300 rounded-full";
+            statusBanner.className = "p-3.5 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 font-mono text-xs flex items-center justify-between";
+            statusBanner.innerHTML = '<span>STATUS: SAFE</span><span class="text-[10px] text-slate-500">SSP: NO</span>';
+          }
+        }
+
+        // Render Log Table
+        if (logTable) {
+          if (emitted.length === 0) {
+            logTable.innerHTML = '<tr><td colspan="6" class="p-4 text-center text-slate-500 italic">No tokens emitted yet...</td></tr>';
+          } else {
+            logTable.innerHTML = emitted.map((tok, idx) => `
+              <tr class="${tok.status === 'HALT' ? 'bg-red-950/40' : (tok.status === 'WARNING' ? 'bg-amber-950/30' : '')}">
+                <td class="p-2.5 font-bold text-slate-400">${idx + 1}</td>
+                <td class="p-2.5 font-bold text-slate-100">${tok.token}</td>
+                <td class="p-2.5 text-slate-300">${(tok.conf * 100).toFixed(0)}%</td>
+                <td class="p-2.5 font-bold ${tok.psc >= 0.85 ? 'text-red-400' : (tok.psc >= 0.65 ? 'text-amber-400' : 'text-emerald-400')}">${tok.psc.toFixed(2)}</td>
+                <td class="p-2.5"><span class="px-2 py-0.5 rounded text-[10px] ${tok.status === 'HALT' ? 'bg-red-500/20 text-red-400 border border-red-500/40' : (tok.status === 'WARNING' ? 'bg-amber-500/20 text-amber-400 border border-amber-500/40' : 'bg-emerald-500/20 text-emerald-400')}">${tok.status}</span></td>
+                <td class="p-2.5 text-slate-400">${tok.ssp ? 'YES' : 'NO'}</td>
+              </tr>
+            `).join("");
+          }
         }
       });
     }
 
-    // Initialize UI on load
-    updateTraceUI();
+    function toggleFullscreenDashboard(show) {
+      const modal = document.getElementById("fullscreen-modal");
+      if (modal) {
+        if (show) {
+          modal.classList.remove("hidden");
+          modal.classList.add("flex");
+          document.body.style.overflow = "hidden";
+        } else {
+          modal.classList.add("hidden");
+          modal.classList.remove("flex");
+          document.body.style.overflow = "auto";
+        }
+      }
+    }
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        toggleFullscreenDashboard(false);
+      }
+    });
+
+    // Initialize on page load
+    initDashboards();
   </script>
 </body>
 </html>
