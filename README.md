@@ -1,6 +1,6 @@
 # SynapseGuard: Real-Time Hallucination Interception via Predictability-Sparsity Coherence (PSC)
 
-🌐 **[Public Research Paper Landing Page](index.html)** | 📊 **[Interactive Dashboard](part_b_diagnostic/dashboard/)**
+🌐 **[SynapseGuard Research App & Dashboard](http://localhost:5174/)**
 
 > **Research Question:** *Can real-time monitoring of Sparse Autoencoder (SAE) latent feature activation sparsity combined with next-token logit predictability detect early hallucination onset in large language models before unsafe tokens are emitted?*
 >
