@@ -81,11 +81,13 @@ python analysis/benchmark_auroc.py
 # Run Python CLI Replay Engine on real demo trace
 python part_b_diagnostic/dashboard/replay_engine.py data/results/demo_traces/demo_02_hallucination_prone.json
 
-# Start local Web App & Interactive Diagnostic Console (Port 5174)
-python -m http.server 5174
+# Start unified React Vite App & Interactive Diagnostic Console (Port 5174)
+cd part_b_diagnostic/dashboard
+npm install
+npm run dev -- --port 5174
 ```
 
-Then open `http://localhost:5174/` in your browser.
+Then open `http://localhost:5174/` in your browser. The Interactive Showcase Console displays first, and clicking "Open Diagnostic Dashboard" opens the trace replay view.
 
 ### 2. Single GPU Session Execution (RTX 3050 6GB VRAM, WSL2 Ubuntu)
 
